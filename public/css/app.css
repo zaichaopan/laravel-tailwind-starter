@@ -6327,6 +6327,221 @@ table {
   z-index: auto;
 }
 
+nav {
+  border-width: 0;
+}
+
+@media (min-width: 992px) {
+  nav {
+    border-bottom-width: 1px;
+    border-color: #dae1e7;
+  }
+}
+
+nav .nav-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+nav .nav-container .left {
+  border-bottom-width: 1px;
+  border-color: #dae1e7;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+nav .nav-container .right {
+  display: none;
+}
+
+nav .nav-container .right ul li {
+  border-bottom-width: 1px;
+  border-color: #dae1e7;
+}
+
+nav .nav-container .right ul li a {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+nav .nav-container .right.active {
+  display: block;
+}
+
+nav .nav-container .hamburger-menu {
+  width: 1rem;
+  background-color: #606f7b;
+  display: inline-block;
+  position: relative;
+  height: .15rem;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+
+nav .nav-container .hamburger-menu::before {
+  content: '';
+  width: 1rem;
+  background-color: #606f7b;
+  position: absolute;
+  height: .15rem;
+  bottom: 200%;
+}
+
+nav .nav-container .hamburger-menu::after {
+  content: '';
+  width: 1rem;
+  background-color: #606f7b;
+  position: absolute;
+  height: .15rem;
+  bottom: -200%;
+}
+
+nav .nav-container .hamburger-menu.open {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  background: transparent;
+}
+
+nav .nav-container .hamburger-menu.open::before {
+  bottom: 0%;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+
+nav .nav-container .hamburger-menu.open::after {
+  bottom: 0%;
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}
+
+@media (min-width: 992px) {
+  nav .nav-container {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    max-width: 992px;
+  }
+
+  nav .nav-container .left {
+    border-width: 0;
+  }
+
+  nav .nav-container .right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  nav .nav-container .right ul li {
+    border-width: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  nav .nav-container {
+    max-width: 1200px;
+  }
+}
+
+.tooltip {
+  opacity: 1 !important;
+}
+
+.tooltip .tooltip-inner {
+  padding: .2rem !important;
+  background: #222;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.tooltip .tooltip-inner-html {
+  background: white;
+  color: #222;
+  border: 1px solid #dae1e7;
+}
+
+.tooltip .tooltip-arrow {
+  width: .5rem;
+  height: .5rem;
+  border: 1px solid;
+  position: absolute;
+  background: #222;
+}
+
+.tooltip .tooltip-arrow-html {
+  background: #fff;
+  border-color: #dae1e7;
+}
+
+.tooltip[x-placement="top"] {
+  top: -6px !important;
+}
+
+.tooltip[x-placement="top"] .tooltip-arrow {
+  border-top: 0;
+  border-left: 0;
+  -webkit-transform: rotate(45deg) translate(50%, 20%);
+          transform: rotate(45deg) translate(50%, 20%);
+  bottom: 0px;
+  left: 50%;
+}
+
+.tooltip[x-placement="bottom"] {
+  top: 6px !important;
+}
+
+.tooltip[x-placement="bottom"] .tooltip-arrow {
+  border-bottom: 0;
+  border-right: 0;
+  -webkit-transform: rotate(45deg) translate(50%, 20%);
+          transform: rotate(45deg) translate(50%, 20%);
+  top: -8px;
+  left: 50%;
+}
+
+.tooltip[x-placement="left"] {
+  left: -6px !important;
+}
+
+.tooltip[x-placement="left"] .tooltip-arrow {
+  border-bottom: 0;
+  border-left: 0;
+  -webkit-transform: rotate(45deg) translateY(-50%);
+          transform: rotate(45deg) translateY(-50%);
+  top: 50%;
+  right: 0px;
+}
+
+.tooltip[x-placement="right"] {
+  left: 6px !important;
+}
+
+.tooltip[x-placement="right"] .tooltip-arrow {
+  border-top: 0;
+  border-right: 0;
+  -webkit-transform: rotate(45deg) translateY(-50%);
+          transform: rotate(45deg) translateY(-50%);
+  top: 50%;
+  left: -6px;
+}
+
 .navbar-laravel {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, .04);

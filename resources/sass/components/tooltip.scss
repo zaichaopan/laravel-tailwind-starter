@@ -1,0 +1,67 @@
+.tooltip {
+    $black: #222;
+    $lightGrey: #DAE1E7;
+    opacity: 1 !important;
+    .tooltip-inner {
+        padding: .2rem !important;
+        background: $black;
+        color: #fff;
+        font-size: 1rem;
+    }
+    .tooltip-inner-html {
+        background: white;
+        color: $black;
+        border: 1px solid $lightGrey;
+    }
+    .tooltip-arrow {
+        width: .5rem;
+        height: .5rem;
+        border: 1px solid;
+        position: absolute;
+        background: $black;
+    }
+    .tooltip-arrow-html {
+        background: #fff;
+        border-color: $lightGrey;
+    }
+    &[x-placement="top"] {
+        top: -6px !important;
+        .tooltip-arrow {
+            border-top: 0;
+            border-left: 0;
+            transform: rotate(45deg) translate(50%, 20%);
+            bottom: 0px;
+            left: 50%;
+        }
+    }
+    &[x-placement="bottom"] {
+        top: 6px !important;
+        .tooltip-arrow {
+            border-bottom: 0;
+            border-right: 0;
+            transform: rotate(45deg) translate(50%, 20%);
+            top: -8px;
+            left: 50%;
+        }
+    }
+    &[x-placement="left"] {
+        left: -6px !important;
+        .tooltip-arrow {
+            border-bottom: 0;
+            border-left: 0;
+            transform: rotate(45deg) translateY(-50%);
+            top: 50%;
+            right: 0px;
+        }
+    }
+    &[x-placement="right"] {
+        left: 6px !important;
+        .tooltip-arrow {
+            border-top: 0;
+            border-right: 0;
+            transform: rotate(45deg) translateY(-50%);
+            top: 50%;
+            left: -6px;
+        }
+    }
+}
