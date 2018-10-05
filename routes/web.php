@@ -24,5 +24,4 @@ Route::get('/home', 'HomeController@index')
 Route::post('images/temp', 'TempImagesController@store')->name('images.temp.store');
 Route::delete('images/temp', 'TempImagesController@destroy')->name('images.temp.destroy');
 
-Route::get('places/create', 'PlacesController@create')->name('places.create');
-Route::post('places', 'PlacesController@store')->name('places.store');
+Route::resource('places', 'PlacesController');

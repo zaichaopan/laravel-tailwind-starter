@@ -14,6 +14,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'short_name' => 'fresh', // or add it to env file
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
