@@ -2,7 +2,8 @@
 
 namespace App\Http\Requests\Places;
 
-use App\Place;
+use App\{Attachment, Place};
+use App\Rules\{Latitude, Longitude};
 use Illuminate\Foundation\Http\FormRequest;
 
 class Store extends FormRequest
@@ -26,11 +27,10 @@ class Store extends FormRequest
     {
         return [
             'address' => 'required|max:255',
-            'lat' => ['nullable', 'regex:/^[-]?(([0-8]?[0-9])\.(\d+))|(90(\.0+)?)$/'],
-            'lng' => ['nullable', 'regex:/^[-]?((((1[0-7][0-9])|([0-9]?[0-9]))\.(\d+))|180(\.0+)?)$/'],
-            'description' => 'nullable|string',
-            'images' => 'nullable|array',
-            'images.*' => 'nullable|string'
+            'lat' => ['nullable', new Latitude],
+            'lng' => ['nullable', new Longitude],
+            'description' => 'required|string',
+            'images' => 'nullable|array|min:1'
         ];
     }
 
@@ -41,16 +41,13 @@ class Store extends FormRequest
      */
     public function persist()
     {
-        $place = Place::create($array_except($this->validated(), ['images']));
-
-        $images = array_unique($request->images);
-
-        $attachments = Attachment::whereIn('path', $images)->get();
+        $place = $this->user()->places()->create(array_except($this->validated(), ['images']));
+        $attachments = Attachment::whereIn('path', array_unique($this->images ?? []))->get();
 
         if ($attachments->count()) {
-            $place->images->saveMany($attachments);
+            $place->images()->saveMany($attachments);
         }
 
-        return $place;
+        return $place->fresh();
     }
 }

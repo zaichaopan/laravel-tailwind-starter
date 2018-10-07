@@ -17,6 +17,7 @@ class CreateAttachmentsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('attachable_id')->nullable();
             $table->string('attachable_type')->nullable();
+            $table->string('name');
             $table->string('path');
             $table->string('extension');
             $table->string('size');

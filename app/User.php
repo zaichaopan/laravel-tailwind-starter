@@ -2,13 +2,15 @@
 
 namespace App;
 
+use Laravel\Passport\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use Notifiable;
+    use HasApiTokens,Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -27,4 +29,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function places()
+    {
+        return $this->hasMany(Place::class);
+    }
+
+    public function owns(Model $model, $foreignKey = 'user_id')
+    {
+        return (int)$this->id === (int) $model->{$foreignKey};
+    }
 }

@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -13,6 +11,10 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->namespace('Api')->group(function () {
+    Route::post('images/temp', 'TempImagesController@store')->name('images.temp.store');
+    Route::delete('images/temp', 'TempImagesController@destroy')->name('images.temp.destroy');
+    
+    Route::post('places/{place}/images', 'PlaceImagesController@store')->name('places.images.store');
+    Route::delete('places/{place}/images', 'PlaceImagesController@destroy')->name('places.images.destroy');
 });

@@ -16,17 +16,36 @@ class Attachment extends Model
 
     protected $appends = ['url'];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::deleting(function ($model) {
+            if (Storage::exists($model->path)) {
+                Storage::delete($model->path);
+            }
+        });
+    }
+
     public function getUrlAttribute(): string
     {
         return Storage::url($this->path);
     }
 
-    public function remove()
+    public function createFromUploadedFile($file, $storeDir)
+    {
+        return static::create([
+            'extension' => $file->extension(),
+            'name' => $file->hashName(),
+            'size' => $file->getClientSize(),
+            'path' => $file->store($storeDir)
+        ]);
+    }
+
+    public function move($newDir)
     {
         if (Storage::exists($this->path)) {
-            Storage::delete($this->path);
+            Storage::move($this->path, $newPath = trim($newDir, '/') . '/' . $this->name);
+            $this->update(['path' => $newPath]);
         }
-
-        $this->delete();
     }
 }

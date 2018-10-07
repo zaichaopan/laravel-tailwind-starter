@@ -109,6 +109,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
+    'tmp_dir' => env('TMP_DIR', 'tmp'),
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

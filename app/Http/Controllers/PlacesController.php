@@ -3,15 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use Illuminate\Session\Store;
+use App\Events\PlaceWasCreated;
+use App\Http\Requests\Places\Store;
 use App\Http\Requests\Places\Update;
 
 class PlacesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('owner:place')->only(['edit', 'update', 'destroy']);
+    }
+
     public function index()
     {
         $places = Place::paginate(10);
-
         return view('places.index', compact('places'));
     }
 
@@ -28,7 +34,7 @@ class PlacesController extends Controller
     public function store(Store $request)
     {
         $place = $request->persist();
-
+        event(new PlaceWasCreated($place));
         return redirect()->route('places.show', $place);
     }
 
@@ -40,14 +46,12 @@ class PlacesController extends Controller
     public function update(Place $place, Update $request)
     {
         $place = $request->persist();
-
         return redirect()->route('places.show', $place);
     }
 
     public function destroy(Place $place)
     {
-        $place->prepareForDeletion()->delete();
-
+        $place->delete();
         return redirect()->route('places.index');
     }
 }

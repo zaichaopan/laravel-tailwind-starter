@@ -1,28 +1,28 @@
 <template>
-    <div>
-        <button type="button"
-                class="share-link"
-                @click.prevent="share">
-
-            <base-icon v-if="to==='twitter'"
-                       :width="29"
-                       :height="29"
-                       :view-box-width="29"
-                       :view-box-height="29"
-                       v-tooltip:bottom="'Share on Twitter'">
-                <icon-twitter />
-            </base-icon>
-
-            <base-icon v-if="to==='facebook'"
-                       :width="29"
-                       :height="29"
-                       :view-box-width="29"
-                       :view-box-height="29"
-                       v-tooltip:bottom="'Share on Facebook'">
-                <icon-facebook />
-            </base-icon>
-        </button>
-    </div>
+  <div>
+    <button type="button" class="share-link" @click.prevent="share">
+      <base-icon
+        v-if="to==='twitter'"
+        :width="29"
+        :height="29"
+        :view-box-width="29"
+        :view-box-height="29"
+        v-tooltip:bottom="'Share on Twitter'"
+      >
+        <icon-twitter/>
+      </base-icon>
+      <base-icon
+        v-if="to==='facebook'"
+        :width="29"
+        :height="29"
+        :view-box-width="29"
+        :view-box-height="29"
+        v-tooltip:bottom="'Share on Facebook'"
+      >
+        <icon-facebook/>
+      </base-icon>
+    </button>
+  </div>
 </template>
 
 <script>
@@ -47,13 +47,13 @@ export default {
     }
   },
   computed: {
-    buildLinkMethod () {
+    resolveBuildLinkMethod () {
       return `build${this.to.charAt(0).toUpperCase() + this.to.slice(1)}ShareLink`
     }
   },
   methods: {
     share () {
-      let link = this[this.buildLinkMethod]()
+      let link = this[this.resolveBuildLinkMethod]()
       window.open(link, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0')
     },
     buildTwitterShareLink () {
