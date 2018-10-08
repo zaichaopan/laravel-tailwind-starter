@@ -1,52 +1,55 @@
 <template>
-    <div class="w-full flex flex-col address-autocomplete">
-        <div class="flex mb-3"
-             v-if="includeUsingCurrentLocation">
-            <label class="block">
-                <input class="mr-2" type="checkbox" v-model="useCurrentLocation">
-                <span class="text-sm">
-                    Use my current location
-                </span>
-            </label>
-        </div>
-
-        <div class="autocomplete-container relative mb-6"
-             :class="customClass">
-            <input name="place"
-                   class="border border-grey-light appearance-none py-3 px-4 flex-1 w-full rounded"
-                   ref="pacInput"
-                   v-model="place.address"
-                   @keydown="handleKeyDown"
-                   :placeholder="placeholder"
-                   :disabled="gettingUseCurrentLocation"
-                   :required="requireAddress">
-
-            <span class="clear-icon p-2 cursor-pointer absolute pin-r"
-                  v-if="showClearIcon"
-                  @click="clearAddress">X</span>
-        </div>
-
-        <div class="flex flex-wrap -mx-3 mb-4">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <input
-                  v-model="place.lat"
-                  id="lat"
-                  type="number"
-                  class="appearance-none w-full border rounded py-3 px-4 mb-3 focus:outline-none"
-                  :disabled="gettingUseCurrentLocation"
-                  placeholder="Latitude">
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-                <input
-                  v-model="place.lng"
-                  id="lng"
-                  type="number"
-                  class="appearance-none block w-full border rounded py-3 px-4 focus:outline-none"
-                  :disabled="gettingUseCurrentLocation"
-                  placeholder="Longitude">
-            </div>
-         </div>
+  <div class="w-full flex flex-col address-autocomplete">
+    <div class="flex mb-3" v-if="includeUsingCurrentLocation">
+      <label class="block">
+        <input class="mr-2" type="checkbox" v-model="useCurrentLocation">
+        <span class="text-sm">Use my current location</span>
+      </label>
     </div>
+    <div class="autocomplete-container relative mb-6" :class="customClass">
+      <input
+        :name="addressInputName"
+        class="border border-grey-light appearance-none py-3 px-4 flex-1 w-full rounded"
+        ref="pacInput"
+        v-model="place.address"
+        @keydown="handleKeyDown"
+        :placeholder="placeholder"
+        :disabled="gettingUseCurrentLocation"
+        :required="requireAddress"
+      >
+      <span
+        class="clear-icon p-2 cursor-pointer absolute pin-r"
+        v-if="showClearIcon"
+        @click="clearAddress"
+      >X</span>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-4" v-show="displayGeo">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <input
+          v-model="place.lat"
+          id="lat"
+          type="number"
+          :name="latInputName"
+          class="appearance-none w-full border rounded py-3 px-4 mb-3 focus:outline-none"
+          :disabled="gettingUseCurrentLocation"
+          placeholder="Latitude"
+          step="any"
+        >
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <input
+          v-model="place.lng"
+          id="lng"
+          type="number"
+          :name="lngInputName"
+          class="appearance-none block w-full border rounded py-3 px-4 focus:outline-none"
+          :disabled="gettingUseCurrentLocation"
+          placeholder="Longitude"
+          step="any"
+        >
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -87,6 +90,18 @@ export default {
     includeUsingCurrentLocation: {
       type: Boolean,
       default: false
+    },
+    latInputName: {
+      type: String,
+      default: 'lat'
+    },
+    lngInputName: {
+      type: String,
+      default: 'lng'
+    },
+    addressInputName: {
+      type: String,
+      default: 'address'
     }
   },
   data () {

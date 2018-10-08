@@ -1,9 +1,9 @@
-@extends('layouts.app', ['title' => 'Home']) 
+@extends('layouts.app', ['title' => 'Home'])
 @section('app.content')
 <div>
     <div class="my-2">
         <h2>Drop images</h2>
-        <multi-image-uploader upload-endpoint="{{ route('images.temp.store') }}" delete-endpoint="{{ route('images.temp.destroy')}}"
+        <multi-image-uploader upload-endpoint="{{ route('images.tmp.store') }}" delete-endpoint="{{ route('images.tmp.destroy')}}"
             file-name="image">
         </multi-image-uploader>
     </div>

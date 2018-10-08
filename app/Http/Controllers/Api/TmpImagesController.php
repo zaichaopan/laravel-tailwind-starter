@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Traits\AttachmentRequestHandler;
 
-class TempImagesController extends Controller
+class TmpImagesController extends Controller
 {
     use AttachmentRequestHandler;
 
@@ -21,7 +22,7 @@ class TempImagesController extends Controller
 
     public function destroy(Request $request)
     {
-        $this->deleteAttachment($request->image);
+        $this->deleteAttachment($request->path);
 
         return response()->json(['data' => ['success' => true]]);
     }

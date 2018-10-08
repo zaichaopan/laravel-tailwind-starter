@@ -31,8 +31,8 @@ trait AttachmentRequestHandler
 
     protected function deleteAttachment($path, Attachment $attachment = null)
     {
-        abort_unless($path = $path, 404);
-        $attachment = $attachment ?? Attachment::wherePath($path)->first();
+        abort_unless($path, 404);
+        $attachment = $attachment ?? Attachment::where('path', $path)->orWhere('name', $path)->first();
         optional($attachment)->delete();
     }
 }

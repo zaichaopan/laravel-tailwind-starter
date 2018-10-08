@@ -25,7 +25,7 @@ class PlaceImagesController extends Controller
 
     public function destroy(Place $place, Request $request)
     {
-        $this->deleteAttachment($request->image);
+        $this->deleteAttachment($request->path);
         return response()->json(['data' => ['success' => true]]);
     }
 

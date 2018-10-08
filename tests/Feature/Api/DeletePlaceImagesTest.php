@@ -39,7 +39,7 @@ class DeletePlaceImagesTest extends TestCase
         $path = $attachment->path;
         storage::disk('public')->assertExists($path);
         $this->actingAs($user, 'api');
-        $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['image' => $path]);
+        $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['path' => $path]);
 
         $this->assertCount(0, $place->fresh()->images);
         storage::disk('public')->assertMissing($path);
@@ -51,6 +51,6 @@ class DeletePlaceImagesTest extends TestCase
         $user = factory('App\User')->create();
         $place = factory('App\Place')->create(['user_id' => $user->id]);
         $this->actingAs($user, 'api');
-        $response = $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['image' => 'none_existing.jpg'])->assertStatus(200);
+        $response = $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['path' => 'none_existing.jpg'])->assertStatus(200);
     }
 }

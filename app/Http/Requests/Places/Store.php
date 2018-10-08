@@ -42,7 +42,8 @@ class Store extends FormRequest
     public function persist()
     {
         $place = $this->user()->places()->create(array_except($this->validated(), ['images']));
-        $attachments = Attachment::whereIn('path', array_unique($this->images ?? []))->get();
+        $images = array_unique($this->images ?? []);
+        $attachments = Attachment::whereIn('path', $images)->orWhereIn('name', $images)->get();
 
         if ($attachments->count()) {
             $place->images()->saveMany($attachments);

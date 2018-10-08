@@ -21,6 +21,6 @@ class Update extends Store
      */
     public function persist()
     {
-        return tap($this->place)->update($this->validated());
+        return tap($this->place)->update(array_except($this->validated(), 'images'));
     }
 }

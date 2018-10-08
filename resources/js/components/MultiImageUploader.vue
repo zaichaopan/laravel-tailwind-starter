@@ -1,48 +1,41 @@
 <template>
-    <base-dropzone @files:added="handleFilesAdded"
-                   @area:clicked="handleAreaClicked">
-        <form class="upload-form">
-            <input type="file"
-                   id="fileElem"
-                   ref="input"
-                   multiple
-                   accept="image/*"
-                   @change="({ target: { files }}) => handleFilesAdded(files)">
-            <div class="title"
-                 v-if="!images.length">
-                <div class="p-1">
-                    Drop images here or <span class="text-blue hover:underline">click</span> to upload
-                </div>
-            </div>
-
-            <div class="feedback">
-                {{ feedBack}}
-            </div>
-
-            <div class="preview-area flex flex-wrap"
-                 ref="previewContainer"
-                 v-if="images.length">
-                <div v-for="(item, index) in images"
-                     class="image-container w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4"
-                     :key="index">
-                    <img :src="item.src || item.url ||  previewImage(item.file, index)">
-                    <a v-if="item.uploaded || item.path"
-                       class="rm-btn"
-                       role="button"
-                       @click="removeImage(item, index)">
-                        &times;
-                    </a>
-
-                    <div class="progress"
-                         v-if="item.uploading">
-                        <div class="progress-bar"
-                             :style="`width:${item.progress}`">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </base-dropzone>
+  <base-dropzone @files:added="handleFilesAdded" @area:clicked="handleAreaClicked">
+    <form class="upload-form">
+      <input
+        type="file"
+        id="fileElem"
+        ref="input"
+        multiple
+        accept="image/*"
+        @change="({ target: { files }}) => handleFilesAdded(files)"
+      >
+      <div class="title" v-if="!images.length">
+        <div class="p-1">
+          Drop images here or
+          <span class="text-blue hover:underline">click</span>to upload
+        </div>
+      </div>
+      <div class="feedback">{{ feedBack}}</div>
+      <div class="preview-area flex flex-wrap" ref="previewContainer" v-if="images.length">
+        <div
+          v-for="(item, index) in images"
+          class="image-container w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4"
+          :key="index"
+        >
+          <img :src="item.src || item.url ||  previewImage(item.file, index)">
+          <a
+            v-if="item.uploaded || item.path"
+            class="rm-btn"
+            role="button"
+            @click="removeImage(item, index)"
+          >&times;</a>
+          <div class="progress" v-if="item.uploading">
+            <div class="progress-bar" :style="`width:${item.progress}`"></div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </base-dropzone>
 </template>
 
 <script>
@@ -90,6 +83,9 @@ export default {
   watch: {
     images () {
       this.$emit('input', this.images)
+    },
+    value () {
+      this.images = this.value
     }
   },
   methods: {
@@ -116,18 +112,17 @@ export default {
           uploaded: false,
           uploading: false,
           path: null,
+          name: null,
           src: null,
           progress: '0%'
         }
       })
 
-      this.images.push(...images)
-
       if (this.uploadEndpoint === null) {
         return
       }
 
-      this.images.forEach((image, index) => {
+      images.forEach((image, index) => {
         if (image.uploaded) return
         let formData = new FormData()
         formData.append(this.fileName, image.file)
@@ -142,9 +137,10 @@ export default {
             image.path = data.path
             image.uploading = false
             image.uploaded = true
+            image.name = data.name
+            this.images.push(image)
           })
           .catch(err => { // eslint-disable-line  handle-callback-err
-            this.images.splice(index, 1)
             this.feedBack = 'Something went wrong! Please try it again !'
             image.uploading = false
           })

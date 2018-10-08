@@ -12,9 +12,9 @@
 */
 
 Route::middleware('auth:api')->namespace('Api')->group(function () {
-    Route::post('images/temp', 'TempImagesController@store')->name('images.temp.store');
-    Route::delete('images/temp', 'TempImagesController@destroy')->name('images.temp.destroy');
-    
+    Route::post('images/tmp', 'TmpImagesController@store')->name('images.tmp.store');
+    Route::delete('images/tmp', 'TmpImagesController@destroy')->name('images.tmp.destroy');
+
     Route::post('places/{place}/images', 'PlaceImagesController@store')->name('places.images.store');
     Route::delete('places/{place}/images', 'PlaceImagesController@destroy')->name('places.images.destroy');
 });

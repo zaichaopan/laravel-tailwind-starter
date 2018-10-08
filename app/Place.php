@@ -16,6 +16,8 @@ class Place extends Model
     */
     protected $guarded = [];
 
+    protected $with = ['images'];
+
     protected static function boot()
     {
         parent::boot();

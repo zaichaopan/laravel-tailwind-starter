@@ -77,18 +77,12 @@
                                 </a>
                                 <a
                                     href="/logout"
-                                    @click.prevent="document.forms.logout.submit()"
+                                    @click.prevent="logout"
                                     class="flex items-center no-underline text-sm block px-4 py-4 border-b text-grey-darker hover:bg-grey-lightest whitespace-no-wrap"
                                 >
                                     <span>Logout</span>
                                 </a>
-                                <form
-                                    ref="logoutForm"
-                                    action="/logout"
-                                    method="POST"
-                                    class="hidden"
-                                    name="logout"
-                                >
+                                <form ref="logoutForm" action="/logout" method="POST" name="logout">
                                     <csrf-token/>
                                 </form>
                             </div>
@@ -114,10 +108,10 @@ export default {
     },
     closeMobileNav () {
       this.shouldShowMobileNav = false
+    },
+    logout () {
+      document.forms.logout.submit()
     }
-    // logout () {
-    //   this.$refs.logoutForm.submit()
-    // }
   },
   mounted () {
   }
