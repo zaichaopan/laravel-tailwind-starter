@@ -15483,7 +15483,8 @@ var _initialiseProps = function _initialiseProps() {
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(16);
-module.exports = __webpack_require__(128);
+__webpack_require__(132);
+module.exports = __webpack_require__(133);
 
 
 /***/ }),
@@ -15537,7 +15538,7 @@ window.Vue.component('csrf-token', __webpack_require__(111));
 window.Vue.component('place-form', __webpack_require__(114));
 window.Vue.component('address-autocomplete', __webpack_require__(117));
 window.Vue.component('click-outside', __webpack_require__(126));
-window.Vue.component('autosize-textarea', __webpack_require__(136));
+window.Vue.component('autosize-textarea', __webpack_require__(128));
 
 /* eslint-disable */
 var app = new window.Vue({
@@ -34214,13 +34215,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       shouldShowMobileNav: false,
-      user: window.App.user,
-      csrfToken: window.App.csrfToken
+      user: window.App.user
     };
   },
 
@@ -34230,10 +34235,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     closeMobileNav: function closeMobileNav() {
       this.shouldShowMobileNav = false;
-    },
-    logout: function logout() {
-      this.$refs.logoutForm.submit();
     }
+    // logout () {
+    //   this.$refs.logoutForm.submit()
+    // }
+
   },
   mounted: function mounted() {}
 });
@@ -34279,7 +34285,7 @@ var render = function() {
         _c(
           "div",
           {
-            staticClass: "right bg-white w-full lg:flex pt-0 lg:w-auto ",
+            staticClass: "right bg-white w-full lg:flex pt-0 lg:w-auto",
             class: { active: _vm.shouldShowMobileNav }
           },
           [
@@ -34361,7 +34367,8 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              _vm._s(_vm.user.name) +
+                              "\n                            " +
+                                _vm._s(_vm.user.name) +
                                 "\n                             \n                            "
                             ),
                             _c(
@@ -34406,7 +34413,7 @@ var render = function() {
                                   "flex items-center no-underline block text-sm px-1 py-4 border-b text-grey-darker hover:bg-grey-lightest whitespace-no-wrap",
                                 attrs: { href: "#" }
                               },
-                              [_c("span", [_vm._v(" Setting")])]
+                              [_c("span", [_vm._v("Setting")])]
                             ),
                             _vm._v(" "),
                             _c(
@@ -34418,7 +34425,7 @@ var render = function() {
                                 on: {
                                   click: function($event) {
                                     $event.preventDefault()
-                                    return _vm.logout($event)
+                                    _vm.document.forms.logout.submit()
                                   }
                                 }
                               },
@@ -34430,14 +34437,14 @@ var render = function() {
                               {
                                 ref: "logoutForm",
                                 staticClass: "hidden",
-                                attrs: { action: "/logout", method: "POST" }
+                                attrs: {
+                                  action: "/logout",
+                                  method: "POST",
+                                  name: "logout"
+                                }
                               },
-                              [
-                                _c("input", {
-                                  attrs: { type: "hidden", name: "_token" },
-                                  domProps: { value: _vm.csrfToken }
-                                })
-                              ]
+                              [_c("csrf-token")],
+                              1
                             )
                           ]
                         )
@@ -34467,7 +34474,7 @@ var staticRenderFns = [
             staticClass: "flex items-center h-16 text-grey-darker no-underline",
             attrs: { href: "/home" }
           },
-          [_vm._v("Laravel\n                    ")]
+          [_vm._v("Laravel")]
         )
       ])
     ])
@@ -34484,7 +34491,7 @@ var staticRenderFns = [
             "flex items-center h-16 capitalize text-sm font-light text-grey-darker underline no-underline",
           attrs: { to: "/home" }
         },
-        [_vm._v("\n                        Home\n                    ")]
+        [_vm._v("Home")]
       )
     ])
   }
@@ -34595,7 +34602,6 @@ exports.push([module.i, "\n", ""]);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -36055,13 +36061,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   computed: {
-    buildLinkMethod: function buildLinkMethod() {
+    resolveBuildLinkMethod: function resolveBuildLinkMethod() {
       return 'build' + (this.to.charAt(0).toUpperCase() + this.to.slice(1)) + 'ShareLink';
     }
   },
   methods: {
     share: function share() {
-      var link = this[this.buildLinkMethod]();
+      var link = this[this.resolveBuildLinkMethod]();
       window.open(link, '', 'left=0,top=0,width=650,height=420,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
     },
     buildTwitterShareLink: function buildTwitterShareLink() {
@@ -39403,17 +39409,124 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 /* 128 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(129)
+/* template */
+var __vue_template__ = __webpack_require__(131)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/AutosizeTextarea.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-e0d61216", Component.options)
+  } else {
+    hotAPI.reload("data-v-e0d61216", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ }),
-/* 129 */,
-/* 130 */,
-/* 131 */,
-/* 132 */,
-/* 133 */,
-/* 134 */
+/* 129 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_autosize__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    name: {
+      type: String,
+      default: 'body'
+    },
+    required: {
+      type: Boolean,
+      default: true
+    },
+    placeholder: {
+      type: String,
+      default: 'Say something nice...'
+    },
+    rows: {
+      type: Number,
+      default: 3
+    },
+    value: {
+      type: String,
+      default: ''
+    },
+    customClass: {
+      type: String,
+      default: ''
+    }
+  },
+  data: function data() {
+    return {
+      body: this.value
+    };
+  },
+
+  watch: {
+    value: function value() {
+      this.body = this.value;
+    }
+  },
+  methods: {
+    handleInputChange: function handleInputChange() {
+      this.$emit('input', this.body);
+    }
+  },
+  mounted: function mounted() {
+    __WEBPACK_IMPORTED_MODULE_0_autosize___default()(this.$refs.autosize);
+  }
+});
+
+/***/ }),
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -39709,126 +39822,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 });
 
 /***/ }),
-/* 135 */,
-/* 136 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(137)
-/* template */
-var __vue_template__ = __webpack_require__(138)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/AutosizeTextarea.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-e0d61216", Component.options)
-  } else {
-    hotAPI.reload("data-v-e0d61216", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 137 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize__ = __webpack_require__(134);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_autosize__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    name: {
-      type: String,
-      default: 'body'
-    },
-    required: {
-      type: Boolean,
-      default: true
-    },
-    placeholder: {
-      type: String,
-      default: 'Say something nice...'
-    },
-    rows: {
-      type: Number,
-      default: 3
-    },
-    value: {
-      type: String,
-      default: ''
-    },
-    customClass: {
-      type: String,
-      default: ''
-    }
-  },
-  data: function data() {
-    return {
-      body: this.value
-    };
-  },
-
-  watch: {
-    value: function value() {
-      this.body = this.value;
-    }
-  },
-  methods: {
-    handleInputChange: function handleInputChange() {
-      this.$emit('input', this.body);
-    }
-  },
-  mounted: function mounted() {
-    __WEBPACK_IMPORTED_MODULE_0_autosize___default()(this.$refs.autosize);
-  }
-});
-
-/***/ }),
-/* 138 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -39871,6 +39865,18 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-e0d61216", module.exports)
   }
 }
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
