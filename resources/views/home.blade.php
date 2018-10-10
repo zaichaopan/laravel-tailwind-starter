@@ -1,13 +1,13 @@
 @extends('layouts.app', ['title' => 'Home'])
 @section('app.content')
 <div>
+    {{--
     <div class="my-2">
         <h2>Drop images</h2>
         <multi-image-uploader upload-endpoint="{{ route('images.tmp.store') }}" delete-endpoint="{{ route('images.tmp.destroy')}}"
             file-name="image">
         </multi-image-uploader>
-    </div>
-
+    </div> --}} {{--
     <div class="my-6">
         <base-dropdown>
             <button type="button" slot="link" href="#" class="p-2 border border-grey-light no-underline">
@@ -29,8 +29,7 @@
                                         </a>
             </div>
         </base-dropdown>
-    </div>
-
+    </div> --}} {{--
     <div class="my-2">
         <h2>Tooltips</h2>
 
@@ -45,8 +44,7 @@
                 <p>Hello world</p>
             </div>
         </base-tooltip>
-    </div>
-
+    </div> --}} {{--
     <div class="my-2">
         <h2>Share the link</h2>
         <share-link to="twitter" :params="{text: 'Replace this with your text', hashtags: 'hashtag1,hashtag2'}">
@@ -83,6 +81,26 @@
         <div>
             <file-input></file-input>
         </div>
+    </div> --}}
+
+    <div class="my-8">
+        <base-carousel :total-items="5" :desktop-per-page="4">
+            <div class="p-2">
+                <img src="https://placeimg.com/640/480/any" class="rounded">
+            </div>
+            <div class="p-2">
+                <img src="https://placeimg.com/640/480/nature" class="rounded">
+            </div>
+            <div class="p-2">
+                <img src="https://placeimg.com/640/480/animals" class="rounded">
+            </div>
+            <div class="p-2">
+                <img src="https://placeimg.com/640/480/people" class="rounded">
+            </div>
+            <div class="p-2">
+                <img src="https://placeimg.com/640/480/tech" class="rounded">
+            </div>
+        </base-carousel>
     </div>
 
 </div>

@@ -47,6 +47,8 @@ Vue.component('address-autocomplete', require('./components/AddressAutocomplete.
 Vue.component('click-outside', require('./components/ClickOutside.vue'))
 Vue.component('autosize-textarea', require('./components/AutosizeTextarea.vue'))
 Vue.component('base-button', require('./components/BaseButton.vue'))
+Vue.component('base-checkbox', require('./components/BaseCheckbox.vue'))
+Vue.component('base-carousel', require('./components/BaseCarousel.vue'))
 
 /* eslint-disable */
 const app = new Vue({

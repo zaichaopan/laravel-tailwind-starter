@@ -1,10 +1,11 @@
 <template>
   <div class="w-full flex flex-col address-autocomplete">
     <div class="flex mb-3" v-if="includeUsingCurrentLocation">
-      <label class="block">
+      <!-- <label class="block">
         <input class="mr-2" type="checkbox" v-model="useCurrentLocation">
         <span class="text-sm">Use my current location</span>
-      </label>
+      </label>-->
+      <base-checkbox v-model="useCurrentLocation" text="Use my current location"></base-checkbox>
     </div>
     <div class="autocomplete-container relative mb-6" :class="customClass">
       <input

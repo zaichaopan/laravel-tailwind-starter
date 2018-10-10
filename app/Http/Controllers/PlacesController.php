@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use App\NestedCommentsService;
 use App\Events\PlaceWasCreated;
 use App\Http\Requests\Places\Store;
 use App\Http\Requests\Places\Update;
@@ -26,8 +27,10 @@ class PlacesController extends Controller
         return view('places.create');
     }
 
-    public function show(Place $place)
+    public function show(Place $place, Request $request)
     {
+        // $comments = (new NestedCommentsService($place, $request))->paginate();
+
         return view('places.show', compact('place'));
     }
 

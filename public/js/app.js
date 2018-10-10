@@ -15540,6 +15540,8 @@ Vue.component('address-autocomplete', __webpack_require__(117));
 Vue.component('click-outside', __webpack_require__(126));
 Vue.component('autosize-textarea', __webpack_require__(128));
 Vue.component('base-button', __webpack_require__(138));
+Vue.component('base-checkbox', __webpack_require__(148));
+Vue.component('base-carousel', __webpack_require__(153));
 
 /* eslint-disable */
 var app = new Vue({
@@ -35323,7 +35325,7 @@ exports = module.exports = __webpack_require__(2)(false);
 
 
 // module
-exports.push([module.i, "\n.upload-form #fileElem[data-v-12c65c4a] {\n  display: none;\n}\n.upload-form .title[data-v-12c65c4a] {\n  text-align: center;\n  color: #606f7b;\n}\n.upload-form .title svg[data-v-12c65c4a] {\n  fill: currentColor;\n}\n.upload-form .feedback[data-v-12c65c4a] {\n  font-size: .8rem;\n  padding: .5rem;\n  color: #e3342f;\n  text-align: center;\n}\n.upload-form p[data-v-12c65c4a] {\n  margin-top: 0;\n}\n.upload-form .progress[data-v-12c65c4a] {\n  border: 1px solid #f1f5f8;\n  margin-top: .5rem;\n}\n.upload-form .progress .progress-bar[data-v-12c65c4a] {\n  height: .8rem;\n  background: #6cb2eb;\n}\n.upload-form .preview-area[data-v-12c65c4a] {\n  padding: 1rem;\n}\n.upload-form .preview-area .image-container[data-v-12c65c4a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: relative;\n  padding: 1rem;\n  -ms-flex-line-pack: center;\n      align-content: center;\n}\n.upload-form .preview-area .image-container img[data-v-12c65c4a] {\n  border-radius: .2rem;\n  width: 100%;\n  min-height: 150px;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);\n          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);\n}\n.upload-form .preview-area .image-container .rm-btn[data-v-12c65c4a] {\n  position: absolute;\n  top: 22px;\n  right: 22px;\n  height: 22px;\n  width: 22px;\n  color: #ffff;\n  text-decoration: none;\n  font-size: 1.5rem;\n  line-height: .8;\n  background: rgba(0, 0, 0, .2);\n  border: none;\n  display: inline-block;\n  text-align: center;\n  border-radius: 9999px;\n  cursor: pointer;\n}\n.upload-form .preview-area .image-container .rm-btn[data-v-12c65c4a]:focus {\n  outline: none;\n}\n", ""]);
+exports.push([module.i, "\n.upload-form #fileElem[data-v-12c65c4a] {\n  display: none;\n}\n.upload-form .title[data-v-12c65c4a] {\n  text-align: center;\n  color: #606f7b;\n}\n.upload-form .title svg[data-v-12c65c4a] {\n  fill: currentColor;\n}\n.upload-form .feedback[data-v-12c65c4a] {\n  font-size: .8rem;\n  padding: .5rem;\n  color: #e3342f;\n  text-align: center;\n}\n.upload-form p[data-v-12c65c4a] {\n  margin-top: 0;\n}\n.upload-form .progress[data-v-12c65c4a] {\n  border: 1px solid #f1f5f8;\n  margin-top: .5rem;\n}\n.upload-form .progress .progress-bar[data-v-12c65c4a] {\n  height: .8rem;\n  background: #6cb2eb;\n}\n.upload-form .preview-area[data-v-12c65c4a] {\n  padding: 1rem;\n}\n.upload-form .preview-area .image-container[data-v-12c65c4a] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  position: relative;\n  padding: 1rem;\n  -ms-flex-line-pack: center;\n      align-content: center;\n}\n.upload-form .preview-area .image-container img[data-v-12c65c4a] {\n  border-radius: .2rem;\n  width: 100%;\n  -o-object-fit: cover;\n     object-fit: cover;\n  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);\n          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .1);\n}\n.upload-form .preview-area .image-container .rm-btn[data-v-12c65c4a] {\n  position: absolute;\n  top: 22px;\n  right: 22px;\n  height: 22px;\n  width: 22px;\n  color: #ffff;\n  text-decoration: none;\n  font-size: 1.5rem;\n  line-height: .8;\n  background: rgba(0, 0, 0, .2);\n  border: none;\n  display: inline-block;\n  text-align: center;\n  border-radius: 9999px;\n  cursor: pointer;\n}\n.upload-form .preview-area .image-container .rm-btn[data-v-12c65c4a]:focus {\n  outline: none;\n}\n", ""]);
 
 // exports
 
@@ -35594,6 +35596,7 @@ var render = function() {
                   },
                   [
                     _c("img", {
+                      staticClass: "h-64 md:h-48",
                       attrs: {
                         src:
                           item.src ||
@@ -38155,6 +38158,7 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 //
 //
 //
+//
 
 
 
@@ -39236,52 +39240,23 @@ var render = function() {
     { staticClass: "w-full flex flex-col address-autocomplete" },
     [
       _vm.includeUsingCurrentLocation
-        ? _c("div", { staticClass: "flex mb-3" }, [
-            _c("label", { staticClass: "block" }, [
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.useCurrentLocation,
-                    expression: "useCurrentLocation"
-                  }
-                ],
-                staticClass: "mr-2",
-                attrs: { type: "checkbox" },
-                domProps: {
-                  checked: Array.isArray(_vm.useCurrentLocation)
-                    ? _vm._i(_vm.useCurrentLocation, null) > -1
-                    : _vm.useCurrentLocation
-                },
-                on: {
-                  change: function($event) {
-                    var $$a = _vm.useCurrentLocation,
-                      $$el = $event.target,
-                      $$c = $$el.checked ? true : false
-                    if (Array.isArray($$a)) {
-                      var $$v = null,
-                        $$i = _vm._i($$a, $$v)
-                      if ($$el.checked) {
-                        $$i < 0 && (_vm.useCurrentLocation = $$a.concat([$$v]))
-                      } else {
-                        $$i > -1 &&
-                          (_vm.useCurrentLocation = $$a
-                            .slice(0, $$i)
-                            .concat($$a.slice($$i + 1)))
-                      }
-                    } else {
-                      _vm.useCurrentLocation = $$c
-                    }
-                  }
+        ? _c(
+            "div",
+            { staticClass: "flex mb-3" },
+            [
+              _c("base-checkbox", {
+                attrs: { text: "Use my current location" },
+                model: {
+                  value: _vm.useCurrentLocation,
+                  callback: function($$v) {
+                    _vm.useCurrentLocation = $$v
+                  },
+                  expression: "useCurrentLocation"
                 }
-              }),
-              _vm._v(" "),
-              _c("span", { staticClass: "text-sm" }, [
-                _vm._v("Use my current location")
-              ])
-            ])
-          ])
+              })
+            ],
+            1
+          )
         : _vm._e(),
       _vm._v(" "),
       _c(
@@ -39578,6 +39553,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39605,6 +39581,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     customClass: {
       type: String,
       default: ''
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
     }
   },
   data: function data() {
@@ -39943,7 +39923,7 @@ var render = function() {
       placeholder: _vm.placeholder,
       rows: _vm.rows,
       required: _vm.required,
-      autofocus: ""
+      autofocus: _vm.autofocus
     },
     domProps: { value: _vm.body },
     on: {
@@ -40135,6 +40115,569 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-21673c8e", module.exports)
+  }
+}
+
+/***/ }),
+/* 143 */,
+/* 144 */,
+/* 145 */,
+/* 146 */,
+/* 147 */,
+/* 148 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(149)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(151)
+/* template */
+var __vue_template__ = __webpack_require__(152)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-085d9f9f"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/BaseCheckbox.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-085d9f9f", Component.options)
+  } else {
+    hotAPI.reload("data-v-085d9f9f", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 149 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(150);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("a482f238", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-085d9f9f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseCheckbox.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-085d9f9f\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseCheckbox.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 150 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n@charset \"UTF-8\";\n.checkbox-container[data-v-085d9f9f] {\n  position: relative;\n}\n.checkbox-container .custom-checkbox[data-v-085d9f9f] {\n  cursor: pointer;\n  -webkit-transform: translate(0, -50%);\n}\n.checkbox-container .custom-checkbox .slider-body[data-v-085d9f9f] {\n  width: 48px;\n  height: 30px;\n  border-radius: 99999px;\n  background-color: #e6e6e6;\n}\n.checkbox-container .custom-checkbox .checkbox[data-v-085d9f9f] {\n  display: none;\n}\n.checkbox-container .custom-checkbox .checkbox:checked + .slider .slider-ball[data-v-085d9f9f] {\n  left: 18px;\n  background-color: #fff;\n  -webkit-transition: all .3s ease-in-out;\n          transition: all .3s ease-in-out;\n}\n.checkbox-container .custom-checkbox .checkbox:checked + .slider .slider-ball[data-v-085d9f9f]:before {\n  content: \"\\2714\";\n  color: #3d4852;\n}\n.checkbox-container .custom-checkbox .checkbox:checked + .slider .slider-body[data-v-085d9f9f] {\n  background-color: #3d4852;\n}\n.checkbox-container .custom-checkbox .slider-ball[data-v-085d9f9f] {\n  position: absolute;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  top: 0px;\n  left: 0px;\n  width: 30px;\n  height: 30px;\n  border-radius: 99999px;\n  border: 1px solid #dddd;\n  background-color: #fff;\n  -webkit-transition: all .3s ease-in-out;\n          transition: all .3s ease-in-out;\n}\n.checkbox-container .custom-checkbox .slider-ball[data-v-085d9f9f]:before {\n  content: \"X\";\n  font-weight: bold;\n  display: block;\n  width: 30px;\n  font-size: .8em;\n  text-align: center;\n  line-height: 26px;\n  color: #222;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 151 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    value: {
+      type: Boolean,
+      default: false
+    },
+    text: {
+      type: String,
+      default: ''
+    }
+  },
+  data: function data() {
+    return {
+      checked: this.value
+    };
+  },
+
+  watch: {
+    checked: function checked() {
+      this.$emit('input', this.checked);
+    }
+  }
+});
+
+/***/ }),
+/* 152 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "checkbox-container flex items-center" }, [
+    _c("div", [
+      _c("label", { staticClass: "custom-checkbox" }, [
+        _c("input", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.checked,
+              expression: "checked"
+            }
+          ],
+          staticClass: "checkbox",
+          attrs: { type: "checkbox" },
+          domProps: {
+            checked: Array.isArray(_vm.checked)
+              ? _vm._i(_vm.checked, null) > -1
+              : _vm.checked
+          },
+          on: {
+            change: function($event) {
+              var $$a = _vm.checked,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 && (_vm.checked = $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    (_vm.checked = $$a.slice(0, $$i).concat($$a.slice($$i + 1)))
+                }
+              } else {
+                _vm.checked = $$c
+              }
+            }
+          }
+        }),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "ml-2 text-sm" }, [
+      _vm._v("Use My current location")
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "slider" }, [
+      _c("div", { staticClass: "slider-body" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "slider-ball" })
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-085d9f9f", module.exports)
+  }
+}
+
+/***/ }),
+/* 153 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(154)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(156)
+/* template */
+var __vue_template__ = __webpack_require__(158)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-5d2e6288"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/BaseCarousel.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5d2e6288", Component.options)
+  } else {
+    hotAPI.reload("data-v-5d2e6288", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 154 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(155);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("6021c597", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d2e6288\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseCarousel.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5d2e6288\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseCarousel.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 155 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.carousel-siema[data-v-5d2e6288] {\n  position: relative;\n}\n.siema-controls[data-v-5d2e6288] {\n  position: absolute;\n  z-index: 8;\n  top: 50%;\n  width: 105%;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n}\n.invisable[data-v-5d2e6288] {\n  visibility: hidden;\n}\nimg[data-v-5d2e6288] {\n  width: 100%;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 156 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_siema__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_siema___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_siema__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    totalItems: {
+      type: Number,
+      required: true
+    },
+    mobilePerPage: {
+      type: Number,
+      default: 1
+    },
+    desktopPerPage: {
+      type: Number,
+      default: 5
+    }
+  },
+  data: function data() {
+    return {
+      siema: {},
+      selector: ''
+    };
+  },
+
+  computed: {
+    shouldSlide: function shouldSlide() {
+      return this.siema.perPage < this.totalItems;
+    },
+    isLastRound: function isLastRound() {
+      return this.siema.perPage + this.siema.currentSlide === this.totalItems;
+    },
+    isFirstRound: function isFirstRound() {
+      return this.siema.currentSlide === 0;
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    this.selector = this.$refs.siema;
+    setTimeout(function () {
+      _this.siema = new __WEBPACK_IMPORTED_MODULE_0_siema___default.a({
+        selector: _this.selector,
+        duration: 200,
+        easing: 'ease-out',
+        perPage: {
+          0: _this.mobilePerPage,
+          768: _this.desktopPerPage
+        },
+        startIndex: 0,
+        draggable: true,
+        threshold: 20,
+        loop: false
+      });
+    }, 50);
+  }
+});
+
+/***/ }),
+/* 157 */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(e,t){ true?module.exports=t():"function"==typeof define&&define.amd?define("Siema",[],t):"object"==typeof exports?exports.Siema=t():e.Siema=t()}("undefined"!=typeof self?self:this,function(){return function(e){function t(r){if(i[r])return i[r].exports;var n=i[r]={i:r,l:!1,exports:{}};return e[r].call(n.exports,n,n.exports,t),n.l=!0,n.exports}var i={};return t.m=e,t.c=i,t.d=function(e,i,r){t.o(e,i)||Object.defineProperty(e,i,{configurable:!1,enumerable:!0,get:r})},t.n=function(e){var i=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(i,"a",i),i},t.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},t.p="",t(t.s=0)}([function(e,t,i){"use strict";function r(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}Object.defineProperty(t,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},s=function(){function e(e,t){for(var i=0;i<t.length;i++){var r=t[i];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}return function(t,i,r){return i&&e(t.prototype,i),r&&e(t,r),t}}(),l=function(){function e(t){var i=this;if(r(this,e),this.config=e.mergeSettings(t),this.selector="string"==typeof this.config.selector?document.querySelector(this.config.selector):this.config.selector,null===this.selector)throw new Error("Something wrong with your selector 😭");this.resolveSlidesNumber(),this.selectorWidth=this.selector.offsetWidth,this.innerElements=[].slice.call(this.selector.children),this.currentSlide=this.config.loop?this.config.startIndex%this.innerElements.length:Math.max(0,Math.min(this.config.startIndex,this.innerElements.length-this.perPage)),this.transformProperty=e.webkitOrNot(),["resizeHandler","touchstartHandler","touchendHandler","touchmoveHandler","mousedownHandler","mouseupHandler","mouseleaveHandler","mousemoveHandler","clickHandler"].forEach(function(e){i[e]=i[e].bind(i)}),this.init()}return s(e,[{key:"attachEvents",value:function(){window.addEventListener("resize",this.resizeHandler),this.config.draggable&&(this.pointerDown=!1,this.drag={startX:0,endX:0,startY:0,letItGo:null,preventClick:!1},this.selector.addEventListener("touchstart",this.touchstartHandler),this.selector.addEventListener("touchend",this.touchendHandler),this.selector.addEventListener("touchmove",this.touchmoveHandler),this.selector.addEventListener("mousedown",this.mousedownHandler),this.selector.addEventListener("mouseup",this.mouseupHandler),this.selector.addEventListener("mouseleave",this.mouseleaveHandler),this.selector.addEventListener("mousemove",this.mousemoveHandler),this.selector.addEventListener("click",this.clickHandler))}},{key:"detachEvents",value:function(){window.removeEventListener("resize",this.resizeHandler),this.selector.removeEventListener("touchstart",this.touchstartHandler),this.selector.removeEventListener("touchend",this.touchendHandler),this.selector.removeEventListener("touchmove",this.touchmoveHandler),this.selector.removeEventListener("mousedown",this.mousedownHandler),this.selector.removeEventListener("mouseup",this.mouseupHandler),this.selector.removeEventListener("mouseleave",this.mouseleaveHandler),this.selector.removeEventListener("mousemove",this.mousemoveHandler),this.selector.removeEventListener("click",this.clickHandler)}},{key:"init",value:function(){this.attachEvents(),this.selector.style.overflow="hidden",this.selector.style.direction=this.config.rtl?"rtl":"ltr",this.buildSliderFrame(),this.config.onInit.call(this)}},{key:"buildSliderFrame",value:function(){var e=this.selectorWidth/this.perPage,t=this.config.loop?this.innerElements.length+2*this.perPage:this.innerElements.length;this.sliderFrame=document.createElement("div"),this.sliderFrame.style.width=e*t+"px",this.enableTransition(),this.config.draggable&&(this.selector.style.cursor="-webkit-grab");var i=document.createDocumentFragment();if(this.config.loop)for(var r=this.innerElements.length-this.perPage;r<this.innerElements.length;r++){var n=this.buildSliderFrameItem(this.innerElements[r].cloneNode(!0));i.appendChild(n)}for(var s=0;s<this.innerElements.length;s++){var l=this.buildSliderFrameItem(this.innerElements[s]);i.appendChild(l)}if(this.config.loop)for(var o=0;o<this.perPage;o++){var a=this.buildSliderFrameItem(this.innerElements[o].cloneNode(!0));i.appendChild(a)}this.sliderFrame.appendChild(i),this.selector.innerHTML="",this.selector.appendChild(this.sliderFrame),this.slideToCurrent()}},{key:"buildSliderFrameItem",value:function(e){var t=document.createElement("div");return t.style.cssFloat=this.config.rtl?"right":"left",t.style.float=this.config.rtl?"right":"left",t.style.width=(this.config.loop?100/(this.innerElements.length+2*this.perPage):100/this.innerElements.length)+"%",t.appendChild(e),t}},{key:"resolveSlidesNumber",value:function(){if("number"==typeof this.config.perPage)this.perPage=this.config.perPage;else if("object"===n(this.config.perPage)){this.perPage=1;for(var e in this.config.perPage)window.innerWidth>=e&&(this.perPage=this.config.perPage[e])}}},{key:"prev",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:1,t=arguments[1];if(!(this.innerElements.length<=this.perPage)){var i=this.currentSlide;if(this.config.loop){if(this.currentSlide-e<0){this.disableTransition();var r=this.currentSlide+this.innerElements.length,n=this.perPage,s=r+n,l=(this.config.rtl?1:-1)*s*(this.selectorWidth/this.perPage),o=this.config.draggable?this.drag.endX-this.drag.startX:0;this.sliderFrame.style[this.transformProperty]="translate3d("+(l+o)+"px, 0, 0)",this.currentSlide=r-e}else this.currentSlide=this.currentSlide-e}else this.currentSlide=Math.max(this.currentSlide-e,0);i!==this.currentSlide&&(this.slideToCurrent(this.config.loop),this.config.onChange.call(this),t&&t.call(this))}}},{key:"next",value:function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:1,t=arguments[1];if(!(this.innerElements.length<=this.perPage)){var i=this.currentSlide;if(this.config.loop){if(this.currentSlide+e>this.innerElements.length-this.perPage){this.disableTransition();var r=this.currentSlide-this.innerElements.length,n=this.perPage,s=r+n,l=(this.config.rtl?1:-1)*s*(this.selectorWidth/this.perPage),o=this.config.draggable?this.drag.endX-this.drag.startX:0;this.sliderFrame.style[this.transformProperty]="translate3d("+(l+o)+"px, 0, 0)",this.currentSlide=r+e}else this.currentSlide=this.currentSlide+e}else this.currentSlide=Math.min(this.currentSlide+e,this.innerElements.length-this.perPage);i!==this.currentSlide&&(this.slideToCurrent(this.config.loop),this.config.onChange.call(this),t&&t.call(this))}}},{key:"disableTransition",value:function(){this.sliderFrame.style.webkitTransition="all 0ms "+this.config.easing,this.sliderFrame.style.transition="all 0ms "+this.config.easing}},{key:"enableTransition",value:function(){this.sliderFrame.style.webkitTransition="all "+this.config.duration+"ms "+this.config.easing,this.sliderFrame.style.transition="all "+this.config.duration+"ms "+this.config.easing}},{key:"goTo",value:function(e,t){if(!(this.innerElements.length<=this.perPage)){var i=this.currentSlide;this.currentSlide=this.config.loop?e%this.innerElements.length:Math.min(Math.max(e,0),this.innerElements.length-this.perPage),i!==this.currentSlide&&(this.slideToCurrent(),this.config.onChange.call(this),t&&t.call(this))}}},{key:"slideToCurrent",value:function(e){var t=this,i=this.config.loop?this.currentSlide+this.perPage:this.currentSlide,r=(this.config.rtl?1:-1)*i*(this.selectorWidth/this.perPage);e?requestAnimationFrame(function(){requestAnimationFrame(function(){t.enableTransition(),t.sliderFrame.style[t.transformProperty]="translate3d("+r+"px, 0, 0)"})}):this.sliderFrame.style[this.transformProperty]="translate3d("+r+"px, 0, 0)"}},{key:"updateAfterDrag",value:function(){var e=(this.config.rtl?-1:1)*(this.drag.endX-this.drag.startX),t=Math.abs(e),i=this.config.multipleDrag?Math.ceil(t/(this.selectorWidth/this.perPage)):1,r=e>0&&this.currentSlide-i<0,n=e<0&&this.currentSlide+i>this.innerElements.length-this.perPage;e>0&&t>this.config.threshold&&this.innerElements.length>this.perPage?this.prev(i):e<0&&t>this.config.threshold&&this.innerElements.length>this.perPage&&this.next(i),this.slideToCurrent(r||n)}},{key:"resizeHandler",value:function(){this.resolveSlidesNumber(),this.currentSlide+this.perPage>this.innerElements.length&&(this.currentSlide=this.innerElements.length<=this.perPage?0:this.innerElements.length-this.perPage),this.selectorWidth=this.selector.offsetWidth,this.buildSliderFrame()}},{key:"clearDrag",value:function(){this.drag={startX:0,endX:0,startY:0,letItGo:null,preventClick:this.drag.preventClick}}},{key:"touchstartHandler",value:function(e){-1!==["TEXTAREA","OPTION","INPUT","SELECT"].indexOf(e.target.nodeName)||(e.stopPropagation(),this.pointerDown=!0,this.drag.startX=e.touches[0].pageX,this.drag.startY=e.touches[0].pageY)}},{key:"touchendHandler",value:function(e){e.stopPropagation(),this.pointerDown=!1,this.enableTransition(),this.drag.endX&&this.updateAfterDrag(),this.clearDrag()}},{key:"touchmoveHandler",value:function(e){if(e.stopPropagation(),null===this.drag.letItGo&&(this.drag.letItGo=Math.abs(this.drag.startY-e.touches[0].pageY)<Math.abs(this.drag.startX-e.touches[0].pageX)),this.pointerDown&&this.drag.letItGo){e.preventDefault(),this.drag.endX=e.touches[0].pageX,this.sliderFrame.style.webkitTransition="all 0ms "+this.config.easing,this.sliderFrame.style.transition="all 0ms "+this.config.easing;var t=this.config.loop?this.currentSlide+this.perPage:this.currentSlide,i=t*(this.selectorWidth/this.perPage),r=this.drag.endX-this.drag.startX,n=this.config.rtl?i+r:i-r;this.sliderFrame.style[this.transformProperty]="translate3d("+(this.config.rtl?1:-1)*n+"px, 0, 0)"}}},{key:"mousedownHandler",value:function(e){-1!==["TEXTAREA","OPTION","INPUT","SELECT"].indexOf(e.target.nodeName)||(e.preventDefault(),e.stopPropagation(),this.pointerDown=!0,this.drag.startX=e.pageX)}},{key:"mouseupHandler",value:function(e){e.stopPropagation(),this.pointerDown=!1,this.selector.style.cursor="-webkit-grab",this.enableTransition(),this.drag.endX&&this.updateAfterDrag(),this.clearDrag()}},{key:"mousemoveHandler",value:function(e){if(e.preventDefault(),this.pointerDown){"A"===e.target.nodeName&&(this.drag.preventClick=!0),this.drag.endX=e.pageX,this.selector.style.cursor="-webkit-grabbing",this.sliderFrame.style.webkitTransition="all 0ms "+this.config.easing,this.sliderFrame.style.transition="all 0ms "+this.config.easing;var t=this.config.loop?this.currentSlide+this.perPage:this.currentSlide,i=t*(this.selectorWidth/this.perPage),r=this.drag.endX-this.drag.startX,n=this.config.rtl?i+r:i-r;this.sliderFrame.style[this.transformProperty]="translate3d("+(this.config.rtl?1:-1)*n+"px, 0, 0)"}}},{key:"mouseleaveHandler",value:function(e){this.pointerDown&&(this.pointerDown=!1,this.selector.style.cursor="-webkit-grab",this.drag.endX=e.pageX,this.drag.preventClick=!1,this.enableTransition(),this.updateAfterDrag(),this.clearDrag())}},{key:"clickHandler",value:function(e){this.drag.preventClick&&e.preventDefault(),this.drag.preventClick=!1}},{key:"remove",value:function(e,t){if(e<0||e>=this.innerElements.length)throw new Error("Item to remove doesn't exist 😭");var i=e<this.currentSlide,r=this.currentSlide+this.perPage-1===e;(i||r)&&this.currentSlide--,this.innerElements.splice(e,1),this.buildSliderFrame(),t&&t.call(this)}},{key:"insert",value:function(e,t,i){if(t<0||t>this.innerElements.length+1)throw new Error("Unable to inset it at this index 😭");if(-1!==this.innerElements.indexOf(e))throw new Error("The same item in a carousel? Really? Nope 😭");var r=t<=this.currentSlide>0&&this.innerElements.length;this.currentSlide=r?this.currentSlide+1:this.currentSlide,this.innerElements.splice(t,0,e),this.buildSliderFrame(),i&&i.call(this)}},{key:"prepend",value:function(e,t){this.insert(e,0),t&&t.call(this)}},{key:"append",value:function(e,t){this.insert(e,this.innerElements.length+1),t&&t.call(this)}},{key:"destroy",value:function(){var e=arguments.length>0&&void 0!==arguments[0]&&arguments[0],t=arguments[1];if(this.detachEvents(),this.selector.style.cursor="auto",e){for(var i=document.createDocumentFragment(),r=0;r<this.innerElements.length;r++)i.appendChild(this.innerElements[r]);this.selector.innerHTML="",this.selector.appendChild(i),this.selector.removeAttribute("style")}t&&t.call(this)}}],[{key:"mergeSettings",value:function(e){var t={selector:".siema",duration:200,easing:"ease-out",perPage:1,startIndex:0,draggable:!0,multipleDrag:!0,threshold:20,loop:!1,rtl:!1,onInit:function(){},onChange:function(){}},i=e;for(var r in i)t[r]=i[r];return t}},{key:"webkitOrNot",value:function(){return"string"==typeof document.documentElement.style.transform?"transform":"WebkitTransform"}}]),e}();t.default=l,e.exports=t.default}])});
+
+/***/ }),
+/* 158 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "carousel-siema" }, [
+    _c("div", { ref: "siema", staticClass: "siema" }, [_vm._t("default")], 2),
+    _vm._v(" "),
+    _c("span", { staticClass: "siema-controls" }, [
+      _c(
+        "span",
+        {
+          staticClass:
+            "border border-grey-light shadow flex h-10 w-10 justify-center rounded-full bg-white",
+          class: { invisable: !_vm.shouldSlide || _vm.isFirstRound },
+          attrs: { "aria-hidden": "true" },
+          on: {
+            click: function($event) {
+              _vm.siema.prev()
+            }
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "flex justify-center outline-none",
+              attrs: { type: "button", "aria-busy": "false" }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticStyle: {
+                    height: "24px",
+                    width: "24px",
+                    display: "block",
+                    fill: "currentcolor"
+                  },
+                  attrs: {
+                    viewBox: "0 0 18 18",
+                    role: "img",
+                    "aria-label": "Previous",
+                    focusable: "false"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "m13.7 16.29a1 1 0 1 1 -1.42 1.41l-8-8a1 1 0 0 1 0-1.41l8-8a1 1 0 1 1 1.42 1.41l-7.29 7.29z",
+                      "fill-rule": "evenodd"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "span",
+        {
+          staticClass:
+            "border border-grey-light shadow flex h-10 w-10 justify-center rounded-full bg-white",
+          class: { invisable: !_vm.shouldSlide || _vm.isLastRound },
+          attrs: { "aria-hidden": "true" },
+          on: {
+            click: function($event) {
+              _vm.siema.next()
+            }
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "flex justify-center outline-none",
+              attrs: { type: "button", "aria-busy": "false" }
+            },
+            [
+              _c(
+                "svg",
+                {
+                  staticStyle: {
+                    height: "24px",
+                    width: "24px",
+                    display: "block",
+                    fill: "currentcolor"
+                  },
+                  attrs: {
+                    viewBox: "0 0 18 18",
+                    role: "img",
+                    "aria-label": "Next",
+                    focusable: "false"
+                  }
+                },
+                [
+                  _c("path", {
+                    attrs: {
+                      d:
+                        "m4.29 1.71a1 1 0 1 1 1.42-1.41l8 8a1 1 0 0 1 0 1.41l-8 8a1 1 0 1 1 -1.42-1.41l7.29-7.29z",
+                      "fill-rule": "evenodd"
+                    }
+                  })
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5d2e6288", module.exports)
   }
 }
 

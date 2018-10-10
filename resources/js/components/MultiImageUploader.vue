@@ -22,7 +22,7 @@
           class="image-container w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/6 mb-4"
           :key="index"
         >
-          <img :src="item.src || item.url ||  previewImage(item.file, index)">
+          <img :src="item.src || item.url ||  previewImage(item.file, index)" class="h-64 md:h-48">
           <a
             v-if="item.uploaded || item.path"
             class="rm-btn"
@@ -226,7 +226,7 @@ export default {
       img {
         border-radius: 0.2rem;
         width: 100%;
-        min-height: 150px;
+        // min-height: 150px;
         object-fit: cover;
         box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
       }

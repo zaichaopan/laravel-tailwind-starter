@@ -1,14 +1,15 @@
 <template>
-    <textarea :name="name"
-              ref="autosize"
-              :class="customClass"
-              v-model="body"
-              :placeholder="placeholder"
-              :rows="rows"
-              :required="required"
-              @input="handleInputChange"
-              autofocus>
-    </textarea>
+  <textarea
+    :name="name"
+    ref="autosize"
+    :class="customClass"
+    v-model="body"
+    :placeholder="placeholder"
+    :rows="rows"
+    :required="required"
+    @input="handleInputChange"
+    :autofocus="autofocus"
+  ></textarea>
 </template>
 
 <script>
@@ -38,6 +39,10 @@ export default {
     customClass: {
       type: String,
       default: ''
+    },
+    autofocus: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
