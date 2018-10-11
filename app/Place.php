@@ -27,6 +27,11 @@ class Place extends Model
         });
     }
 
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, 'commentable');
+    }
+
     public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');
