@@ -11,7 +11,7 @@ class Update extends Store
      */
     public function rules()
     {
-        return array_except(parent::rules(), ['image', 'images.*']);
+        return array_except(parent::rules(), ['images']);
     }
 
     /**
@@ -21,6 +21,6 @@ class Update extends Store
      */
     public function persist()
     {
-        return tap($this->place)->update(array_except($this->validated(), 'images'));
+        return tap($this->place)->update($this->validated());
     }
 }

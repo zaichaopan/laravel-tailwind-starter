@@ -17,4 +17,6 @@ Route::middleware('auth:api')->namespace('Api')->group(function () {
 
     Route::post('places/{place}/images', 'PlaceImagesController@store')->name('places.images.store');
     Route::delete('places/{place}/images', 'PlaceImagesController@destroy')->name('places.images.destroy');
+
+    Route::get('places/{place}/comments', 'PlaceCommentsController@index')->name('places.comments.index');
 });

@@ -10,11 +10,6 @@ class TmpImagesController extends Controller
 {
     use AttachmentRequestHandler;
 
-    protected function attachmentName()
-    {
-        return 'image';
-    }
-
     public function store(Request $request)
     {
         return response()->json(['data' => $this->createAttachment($request, config('app.tmp_dir'))]);
@@ -25,5 +20,10 @@ class TmpImagesController extends Controller
         $this->deleteAttachment($request->path);
 
         return response()->json(['data' => ['success' => true]]);
+    }
+
+    protected function attachmentName()
+    {
+        return 'image';
     }
 }

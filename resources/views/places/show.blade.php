@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => $place->address])
+@extends('layouts.app', ['title' => $place->address]) 
 @section('app.content')
 
 <div class="my-2">
@@ -6,7 +6,7 @@
 </div>
 
 <div class="my-8">
-    @include('comments.partials._comment', ['comments' => $comments])
-    {{ $comments->links() }}
+    <comment-list fetch-endpoint="{{ route('places.comments.index', $place) }}">
+    </comment-list>
 </div>
 @endsection

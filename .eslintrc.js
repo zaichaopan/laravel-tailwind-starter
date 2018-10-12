@@ -8,6 +8,7 @@ module.exports = {
         // 'vue/no-unused-vars': 'error'
     },
     "globals": {
-        "Vue": true
+        "Vue": true,
+        "axios": true
     }
 };

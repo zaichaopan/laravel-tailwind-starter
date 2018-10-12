@@ -21,9 +21,11 @@ class NestedCommentsService
     public function getNestedComments($page, $perPage)
     {
         $allComments = $this->model->comments();
-        $groupedComments = $allComments->groupBy('parent_id');
+        $groupedComments = $allComments->get()->groupBy('parent_id');
         $rootComments = $groupedComments->get(null)->forPage($page, $perPage);
+
         $returnedCommentIds = $this->buildNestedIds($rootComments, $groupedComments);
+
         $groupedReturnedComments = $allComments->whereIn('id', $returnedCommentIds)->get()->groupBy('parent_id');
         $rootReturnedComments = $groupedReturnedComments->get(null);
         return $this->buildNestedComments($rootReturnedComments, $groupedReturnedComments);
@@ -52,10 +54,9 @@ class NestedCommentsService
         });
     }
 
-    public function paginate()
+    public function paginate($perPage)
     {
         $page = $this->request->page;
-        $perPage = $this->request->perPage;
         $path = $this->request->url();
         $query = $this->request->query();
 

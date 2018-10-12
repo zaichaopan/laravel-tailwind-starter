@@ -20,7 +20,9 @@ class MovePlaceImages implements ShouldQueue
      */
     public function handle(PlaceWasCreated $event)
     {
-        $images = $event->place->images;
-        $images->each->move($event->place->imageRootDir());
+        $event->place
+            ->images
+            ->each
+            ->move($event->place->imageRootDir());
     }
 }

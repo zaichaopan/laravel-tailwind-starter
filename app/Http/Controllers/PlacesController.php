@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use Illuminate\Http\Request;
 use App\Events\PlaceWasCreated;
-use App\Http\Requests\Places\Store;
-use App\Http\Requests\Places\Update;
+use App\Http\Requests\Places\{Store, Update};
 
 class PlacesController extends Controller
 {
