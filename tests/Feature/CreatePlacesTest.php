@@ -4,15 +4,18 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Facades\App\Attachment;
+use App\Events\PlaceWasCreated;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
+use App\Listeners\MovePlaceImages;
+use Illuminate\Events\CallQueuedListener;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\{Event, Queue, Storage};
 
 class CreatePlacesTest extends TestCase
 {
     use RefreshDatabase, PlaceValidationTests;
 
-    protected function submitValidation($overrides = [])
+    protected function submitForm($overrides = [])
     {
         $this->actingAs($user = factory('App\User')->create());
         return $this->post(route('places.store'), $this->validParams($overrides));
@@ -83,7 +86,6 @@ class CreatePlacesTest extends TestCase
     /** @test */
     public function temporary_images_of_a_place_will_be_moved_from_tmp_to_its_root_dir()
     {
-        $this->withoutExceptionHandling();
         Storage::fake('public');
 
         $attachment = Attachment::createFromUploadedFile(
@@ -94,15 +96,43 @@ class CreatePlacesTest extends TestCase
         Storage::disk('public')->assertExists($tmpPath = $attachment->path);
 
         $this->actingAs($user = factory('App\User')->create());
-        $this->post(route('places.store'), $this->validParams(['images' =>[$tmpPath]]));
+        $this->post(route('places.store'), $this->validParams(['images' => [$tmpPath]]));
 
         Storage::disk('public')->assertMissing($tmpPath);
         $attachment = $attachment->fresh();
+
         $this->assertEquals(
             $user->places()->first()->imageRootDir() . '/' . $attachment->name,
             $attachment->path
         );
+
         storage::disk('public')->assertExists($attachment->path);
+    }
+
+    /** @test */
+    public function a_place_creation_announcement_is_made_when_a_place_is_created()
+    {
+        Event::fake();
+        $attachment = factory('App\Attachment')->create();
+        $this->actingAs($user = factory('App\User')->create());
+        $this->post(route('places.store'), $this->validParams(['images' => [$attachment->path]]));
+        $place = $user->places()->first();
+        Event::assertDispatched(PlaceWasCreated::class, function ($event) use ($place) {
+            return $event->place->id === $place->id;
+        });
+    }
+
+    /** @test */
+    public function moving_place_images_to_its_root_is_queued_when_a_place_is_created()
+    {
+        Queue::fake();
+        $attachment = factory('App\Attachment')->create();
+        $this->actingAs($user = factory('App\User')->create());
+        $this->post(route('places.store'), $this->validParams(['images' => [$attachment->path]]));
+        $place = $user->places()->first();
+        Queue::assertPushed(CallQueuedListener::class, function ($job) {
+            return $job->class == MovePlaceImages::class;
+        });
     }
 
     /** @test */

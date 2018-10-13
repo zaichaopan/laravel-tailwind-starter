@@ -9,7 +9,7 @@ class UpdatePlacesTest extends TestCase
 {
     use RefreshDatabase, PlaceValidationTests;
 
-    protected function submitValidation($overrides = [])
+    protected function submitForm($overrides = [])
     {
         $user = factory('App\User')->create();
         $place = factory('App\Place')->create(['user_id' => $user->id]);

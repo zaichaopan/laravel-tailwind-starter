@@ -1,21 +1,16 @@
 <?php
 
-namespace App\Jobs;
+namespace App\Listeners;
 
-use Illuminate\Bus\Queueable;
 use App\Events\PlaceWasCreated;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Foundation\Bus\Dispatchable;
 
 class MovePlaceImages implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
-
     /**
-     * Execute the job.
+     * Handle the event.
      *
+     * @param  object  $event
      * @return void
      */
     public function handle(PlaceWasCreated $event)

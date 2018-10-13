@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Jobs\MovePlaceImages;
 use App\Events\PlaceWasCreated;
+use App\Listeners\MovePlaceImages;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
