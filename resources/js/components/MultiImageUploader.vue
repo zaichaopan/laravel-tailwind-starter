@@ -127,7 +127,7 @@ export default {
         let formData = new FormData()
         formData.append(this.fileName, image.file)
         image.uploading = true
-        window.axios
+        axios
           .post(this.uploadEndpoint, formData, {
             onUploadProgress: e =>
               (image.progress = `${e.loaded * 100.0 / e.total}%`)
@@ -151,7 +151,7 @@ export default {
         return
       }
 
-      window.axios
+      axios
         .delete(this.deleteEndpoint, { data: { path: image.path } })
         .then(res => this.images.splice(index, 1))
         .catch(err => { // eslint-disable-line  handle-callback-err

@@ -5,8 +5,8 @@
     <place-form
         method="Post"
         action="{{ route('places.update', $place) }}"
-        upload-image-endpoint="{{ route('places.images.store', $place) }}"
-        delete-image-endpoint="{{ route('places.images.destroy', $place) }}"
+        upload-image-endpoint="{{ route('api.places.images.store', $place) }}"
+        delete-image-endpoint="{{ route('api.places.images.destroy', $place) }}"
         :place="{{ json_encode($place) }}"
         :erros="{{ json_encode($errors->all()) }}">
     </place-form>

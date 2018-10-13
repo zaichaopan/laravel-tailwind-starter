@@ -12,11 +12,16 @@ class DeletePlaceImagesTest extends TestCase
 {
     use RefreshDatabase;
 
+    protected function deleteImage($place, $params = [])
+    {
+        return $this->deleteJson(route('api.places.images.destroy', $place), $params);
+    }
+
     /** @test */
     public function guest_cannot_delete_a_place_image()
     {
         $place = factory('App\Place')->create();
-        $this->deleteJson(route('places.images.destroy', ['place' => $place, 'image' => 'valid_image.jpg']))->assertStatus(401);
+        $this->deleteImage($place, ['image' => 'valid_image.jpg'])->assertStatus(401);
     }
 
     /** @test */
@@ -24,7 +29,7 @@ class DeletePlaceImagesTest extends TestCase
     {
         $place = factory('App\Place')->create();
         $this->actingAs(factory('App\User')->create(), 'api');
-        $this->deleteJson(route('places.images.destroy', ['place' => $place, 'image' => 'valid_image.jpg']))->assertStatus(403);
+        $this->deleteImage($place, ['image' => 'valid_image.jpg'])->assertStatus(403);
     }
 
     /** @test */
@@ -38,8 +43,9 @@ class DeletePlaceImagesTest extends TestCase
         $place->images()->save($attachment);
         $path = $attachment->path;
         storage::disk('public')->assertExists($path);
+
         $this->actingAs($user, 'api');
-        $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['path' => $path]);
+        $this->deleteImage($place, ['path' => $path])->assertStatus(200);
 
         $this->assertCount(0, $place->fresh()->images);
         storage::disk('public')->assertMissing($path);
@@ -51,6 +57,6 @@ class DeletePlaceImagesTest extends TestCase
         $user = factory('App\User')->create();
         $place = factory('App\Place')->create(['user_id' => $user->id]);
         $this->actingAs($user, 'api');
-        $response = $this->deleteJson(route('places.images.destroy', ['place' => $place]), ['path' => 'none_existing.jpg'])->assertStatus(200);
+        $this->deleteImage($place, ['path' => 'none_existing.jpg'])->assertStatus(200);
     }
 }
