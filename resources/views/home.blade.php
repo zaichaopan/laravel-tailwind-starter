@@ -1,6 +1,16 @@
-@extends('layouts.app', ['title' => 'Home'])
+@extends('layouts.app', ['title' => 'Home']) 
 @section('app.content')
-<div>
+<div class="mt-4">
+    <base-dropdown>
+        <div slot="dropdown-trigger">
+            Home
+        </div>
+        <div slot="dropdown-menu">
+            <a href="#" class="dropdown-item hover:bg-blue whitespace-no-wrap">Action</a>
+            <a href="#" class="dropdown-item hover:bg-blue whitespace-no-wrap">Another action</a>
+            <a href="#" class="dropdown-item hover:bg-blue whitespace-no-wrap">Something else here</a>
+        </div>
+    </base-dropdown>
     {{--
     <div class="my-2">
         <h2>Drop images</h2>
@@ -9,26 +19,7 @@
         </multi-image-uploader>
     </div> --}} {{--
     <div class="my-6">
-        <base-dropdown>
-            <button type="button" slot="link" href="#" class="p-2 border border-grey-light no-underline">
-                dropdown
-                <base-icon icon-name="caret"
-                            :width="12"
-                            :height="12">
-                    <icon-caret />
-                </base-icon>
-            </button>
 
-            <div slot="dropdown" class="border border-grey bg-white mt-2 w-32">
-                <a href="#" class="no-underline block px-4 py-4 border-b text-sm text-grey-darker hover:bg-grey-lightest whitespace-no-wrap">Action</a>
-                <a href="#" class="flex items-center no-underline block text-sm px-1 py-4 border-b text-grey-darker hover:bg-grey-lightest whitespace-no-wrap">
-                                            <span> Setting</span>
-                                        </a>
-                <a href="/logout" @click.prevent="logout" class="flex items-center no-underline text-sm block px-4 py-4 border-b text-grey-darker hover:bg-grey-lightest whitespace-no-wrap">
-                                            <span>Logout</span>
-                                        </a>
-            </div>
-        </base-dropdown>
     </div> --}} {{--
     <div class="my-2">
         <h2>Tooltips</h2>
@@ -81,8 +72,7 @@
         <div>
             <file-input></file-input>
         </div>
-    </div> --}}
-
+    </div> --}} {{--
     <div class="my-8">
         <base-carousel :total-items="5" :desktop-per-page="4">
             <div class="p-2">
@@ -101,7 +91,7 @@
                 <img src="https://placeimg.com/640/480/tech" class="rounded">
             </div>
         </base-carousel>
-    </div>
+    </div> --}}
 
 </div>
 @endsection

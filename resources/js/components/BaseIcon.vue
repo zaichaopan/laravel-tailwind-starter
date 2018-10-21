@@ -1,17 +1,17 @@
 <template>
-    <svg xmlns="http://www.w3.org/2000/svg"
-         :width="width"
-         :height="height"
-         :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
-         :aria-labelledby="iconName"
-         role="presentation">
-        <title :class="iconName"
-               lang="en">{{iconName}} icon
-        </title>
-        <g :fill="iconColor">
-            <slot />
-        </g>
-    </svg>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    :width="width"
+    :height="height"
+    :viewBox="`0 0 ${viewBoxWidth} ${viewBoxHeight}`"
+    :aria-labelledby="iconName"
+    role="presentation"
+  >
+    <title :class="iconName" lang="en">{{iconName}} icon</title>
+    <g :fill="iconColor">
+      <slot></slot>
+    </g>
+  </svg>
 </template>
 
 <script>

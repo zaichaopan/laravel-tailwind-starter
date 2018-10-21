@@ -19,6 +19,8 @@ require('./directives/')
  */
 
 Vue.component('app-nav', require('./components/AppNav.vue'))
+Vue.component('navbar-dropdown', require('./components/NavbarDropdown.vue'))
+
 Vue.component('base-dropdown', require('./components/BaseDropdown.vue'))
 Vue.component('base-tooltip', require('./components/BaseTooltip.vue'))
 Vue.component('base-dropzone', require('./components/BaseDropzone.vue'))
@@ -52,6 +54,7 @@ Vue.component('base-carousel', require('./components/BaseCarousel.vue'))
 
 Vue.component('comment-list', require('./components/CommentList.vue'))
 Vue.component('comment-item', require('./components/CommentItem.vue'))
+
 /* eslint-disable */
 const app = new Vue({
     el: '#app'

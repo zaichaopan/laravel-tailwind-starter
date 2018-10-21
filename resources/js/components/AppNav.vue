@@ -1,73 +1,59 @@
 <template>
-    <nav>
-        <div class="nav-container">
-            <!-- left -->
-            <div class="navbar-left">
-                <ul class="flex items-center">
-                    <li>
-                        <a href="/home" class="navbar-brand">Laravel</a>
-                    </li>
-                </ul>
-                <button
-                    class="navbar-toggle"
-                    @click="toggleMobileNav"
-                    type="button"
-                    aria-label="Toggle navigation"
-                >
-                    <span class="navbar-toggle-icon" :class="{open: shouldShowMobileNav}"></span>
-                </button>
-            </div>
-            <!-- right -->
-            <div class="navbar-right" :class="{active: shouldShowMobileNav}">
-                <ul>
-                    <li>
-                        <a to="/home" class="nav-link">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link">
-                            <base-icon
-                                icon-name="message"
-                                :view-box-width="24"
-                                :view-box-height="24"
-                            >
-                                <icon-chat/>
-                            </base-icon>&nbsp;&nbsp;Messages
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-link">
-                            <base-icon icon-name="bell">
-                                <icon-bell/>
-                            </base-icon>&nbsp;Notificationss
-                        </a>
-                    </li>
-                    <li>
-                        <base-dropdown dropdown-class="w-full lg:w-48" alignment="r" :z-index="50">
-                            <a slot="link" href="#" class="nav-dropdown-toggle">
-                                {{user.name}}
-                                &nbsp;
-                                <base-icon icon-name="caret" :width="12" :height="12">
-                                    <icon-caret/>
-                                </base-icon>
-                            </a>
-                            <div slot="dropdown" class="nav-dropodwn-collapse">
-                                <a href="#" class="nav-dropdown-link">Action</a>
-                                <a href="#" class="nav-dropdown-link">
-                                    <span>Setting</span>
-                                </a>
-                                <a href="/logout" @click.prevent="logout" class="nav-dropdown-link">
-                                    <span>Logout</span>
-                                </a>
-                                <form ref="logoutForm" action="/logout" method="POST" name="logout">
-                                    <csrf-token/>
-                                </form>
-                            </div>
-                        </base-dropdown>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav>
+    <div class="nav-container">
+      <!-- left -->
+      <div class="navbar-left">
+        <ul class="flex items-center">
+          <li>
+            <a href="/home" class="navbar-brand">Laravel</a>
+          </li>
+        </ul>
+        <button
+          class="navbar-toggle"
+          @click="toggleMobileNav"
+          type="button"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggle-icon" :class="{open: shouldShowMobileNav}"></span>
+        </button>
+      </div>
+      <!-- right -->
+      <div class="navbar-right" :class="{active: shouldShowMobileNav}">
+        <ul>
+          <li>
+            <a to="/home" class="nav-link">Home</a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              <base-icon icon-name="message" :view-box-width="24" :view-box-height="24">
+                <icon-chat/>
+              </base-icon>&nbsp;&nbsp;Messages
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-link">
+              <base-icon icon-name="bell">
+                <icon-bell/>
+              </base-icon>&nbsp;Notificationss
+            </a>
+          </li>
+          <li>
+            <navbar-dropdown alignment="r">
+              <span slot="dropdown-toggle">{{user.name}}</span>
+              <div slot="dropdown-menu">
+                <a href="#" class="navbar-dropdown-item">Action</a>
+                <a href="#" class="navbar-dropdown-item">Setting</a>
+                <a href="/logout" @click.prevent="logout" class="navbar-dropdown-item">Logout</a>
+              </div>
+            </navbar-dropdown>
+            <form ref="logoutForm" action="/logout" method="POST" name="logout">
+              <csrf-token/>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -99,12 +85,12 @@ nav {
   @apply border-0 flex flex-wrap justify-between items-center;
 }
 
-.nav-container {
-  @apply w-full flex flex-col mx-auto items-center justify-between;
-}
-
 nav ul {
   @apply list-reset;
+}
+
+.nav-container {
+  @apply w-full flex flex-col mx-auto items-center justify-between;
 }
 
 .navbar-left {
@@ -137,21 +123,6 @@ nav ul {
 
 .nav-link {
   @apply flex items-center h-16 capitalize text-sm font-light text-grey-darker underline no-underline;
-}
-
-.nav-dropdown-toggle {
-  @apply flex items-center h-16 text-sm font-light capitalize text-sm text-grey-darker underline no-underline;
-}
-
-.nav-dropodwn-collapse {
-  @apply bg-white border border-b-0 overflow-hidden;
-}
-
-.nav-dropdown-link {
-  @apply flex items-center no-underline text-sm block px-4 py-4 border-b text-grey-darker whitespace-no-wrap;
-}
-.nav-dropdown-link:hover {
-  @apply bg-grey-lightest;
 }
 
 .navbar-toggle {
