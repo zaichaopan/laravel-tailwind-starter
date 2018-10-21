@@ -15548,6 +15548,8 @@ Vue.component('base-carousel', __webpack_require__(142));
 Vue.component('comment-list', __webpack_require__(148));
 Vue.component('comment-item', __webpack_require__(153));
 
+Vue.component('base-tab', __webpack_require__(186));
+
 /* eslint-disable */
 var app = new Vue({
   el: '#app'
@@ -41174,6 +41176,328 @@ exports.push([module.i, "\n.dropdown-item {\n  text-decoration: none;\n  display
 
 // exports
 
+
+/***/ }),
+/* 186 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(187)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(189)
+/* template */
+var __vue_template__ = __webpack_require__(190)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-04108a69"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/BaseTab.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-04108a69", Component.options)
+  } else {
+    hotAPI.reload("data-v-04108a69", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(188);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("4c6094b4", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04108a69\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseTab.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-04108a69\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./BaseTab.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n[role=\"tablist\"][data-v-04108a69] {\n  padding: 0;\n}\n[role=\"tablist\"] li[data-v-04108a69],\n[role=\"tablist\"] a[data-v-04108a69] {\n  display: inline-block;\n}\n[role=\"tablist\"] li[data-v-04108a69]:focus {\n  outline: none;\n}\n[role=\"tablist\"] a[data-v-04108a69]:focus {\n  outline: none;\n}\n[role=\"tablist\"] a[data-v-04108a69] {\n  text-decoration: none;\n  padding: .5rem 1em;\n}\n[role=\"tablist\"] [aria-selected][data-v-04108a69] {\n  /* border: 1px solid #dee2e6; */\n  background: #fff;\n  border-bottom: 0;\n  position: relative;\n  top: 2px;\n  border-bottom: 2px solid #6666c4;\n}\n[role=\"tabpanel\"][data-v-04108a69] {\n  border-top: 1px solid #dee2e6;\n  padding: 1.5rem;\n  outline: none;\n}\n[role=\"tabpanel\"] * + *[data-v-04108a69] {\n  margin-top: .75rem;\n}\n@media (max-width: 550px) {\n[role=\"tablist\"] li[data-v-04108a69],\n  [role=\"tablist\"] a[data-v-04108a69] {\n    display: block;\n    position: static;\n}\n[role=\"tablist\"] a[data-v-04108a69] {\n    border: 1px solid #dee2e6 !important;\n}\n[role=\"tablist\"] li + li a[data-v-04108a69] {\n    border-top: 0 !important;\n}\n[role=\"tablist\"] [aria-selected][data-v-04108a69] {\n    position: static;\n}\n[role=\"tablist\"] [aria-selected][data-v-04108a69]::after {\n    content: \" \\2B05\";\n}\n[role=\"tabpanel\"][data-v-04108a69] {\n    border-top: 0;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 189 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      tabList: null,
+      tabs: null,
+      panels: null
+    };
+  },
+
+  methods: {
+    initTabNodes: function initTabNodes() {
+      var tabbed = document.querySelector('.tabbed');
+      this.tablist = tabbed.querySelector('ul');
+      this.tabs = this.tablist.querySelectorAll('a');
+      this.panels = tabbed.querySelectorAll('[id^="section"]');
+      this.tablist.setAttribute('role', 'tablist');
+    },
+    initTabs: function initTabs() {
+      var _this = this;
+
+      ;[].concat(_toConsumableArray(this.tabs)).forEach(function (tab, i) {
+        tab.setAttribute('role', 'tab');
+        tab.setAttribute('id', 'tab' + (i + 1));
+        tab.setAttribute('tabindex', '-1');
+        tab.parentNode.setAttribute('role', 'presentation');
+        tab.addEventListener('click', function (e) {
+          e.preventDefault();
+          var currentTab = _this.tablist.querySelector('[aria-selected]');
+          if (e.currentTarget !== currentTab) {
+            _this.switchTab(currentTab, e.currentTarget);
+          }
+        });
+        tab.addEventListener('keydown', function (e) {
+          var index = Array.prototype.indexOf.call(_this.tabs, e.currentTarget);
+          var dir = e.which === 37 ? index - 1 : e.which === 39 ? index + 1 : e.which === 40 ? 'down' : null;
+
+          if (dir !== null) {
+            e.preventDefault();
+            dir === 'down' ? _this.panels[i].focus() : _this.tabs[dir] ? _this.switchTab(e.currentTarget, _this.tabs[dir]) : void 0;
+          }
+        });
+      });
+    },
+    initPanels: function initPanels() {
+      var _this2 = this;
+
+      ;[].concat(_toConsumableArray(this.panels)).forEach(function (panel, i) {
+        panel.setAttribute('role', 'tabpanel');
+        panel.setAttribute('tabindex', '-1');
+        panel.setAttribute('aria-labelledby', _this2.tabs[i].id);
+        panel.hidden = true;
+      });
+
+      // Initially activate the first tab and reveal the first tab panel
+      this.tabs[0].removeAttribute('tabindex');
+      this.tabs[0].setAttribute('aria-selected', 'true');
+      this.panels[0].hidden = false;
+    },
+    switchTab: function switchTab(oldTab, newTab) {
+      newTab.focus();
+      newTab.removeAttribute('tabindex');
+      newTab.setAttribute('aria-selected', 'true');
+      oldTab.removeAttribute('aria-selected');
+      oldTab.setAttribute('tabindex', '-1');
+      var index = Array.prototype.indexOf.call(this.tabs, newTab);
+      var oldIndex = Array.prototype.indexOf.call(this.tabs, oldTab);
+      this.panels[oldIndex].hidden = true;
+      this.panels[index].hidden = false;
+    }
+  },
+  mounted: function mounted() {
+    this.initTabNodes();
+    this.initTabs();
+    this.initPanels();
+  }
+});
+
+/***/ }),
+/* 190 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "tabbed" }, [
+      _c("ul", [
+        _c("li", [
+          _c("a", { attrs: { href: "#section1" } }, [_vm._v("Section 1")])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#section2" } }, [_vm._v("Section 2")])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#section3" } }, [_vm._v("Section 3")])
+        ]),
+        _vm._v(" "),
+        _c("li", [
+          _c("a", { attrs: { href: "#section4" } }, [_vm._v("Section 4")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { attrs: { id: "section1" } }, [
+        _c("h2", [_vm._v("Section 1")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod, tortor nec pharetra ultricies, ante erat imperdiet velit, nec laoreet enim lacus a velit.\n            "
+          ),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("Nam luctus")]),
+          _vm._v(
+            ", enim in interdum condimentum, nisl diam iaculis lorem, vel volutpat mi leo sit amet lectus. Praesent non odio bibendum magna bibendum accumsan.\n        "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { attrs: { id: "section2" } }, [
+        _c("h2", [_vm._v("Section 2")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Nullam at diam nec arcu suscipit auctor non a erat. Sed et magna semper, eleifend magna non, facilisis nisl. Proin et est et lorem dictum finibus ut nec turpis. Aenean nisi tortor, euismod a mauris a, mattis scelerisque tortor. Sed dolor risus, varius a nibh id, condimentum lacinia est. In lacinia cursus odio a aliquam. Curabitur tortor magna, laoreet ut rhoncus at, sodales consequat tellus."
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { attrs: { id: "section3" } }, [
+        _c("h2", [_vm._v("Section 3")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "\n            Phasellus ac tristique orci. Nulla maximus\n            "
+          ),
+          _c("a", { attrs: { href: "" } }, [
+            _vm._v("justo nec dignissim consequat")
+          ]),
+          _vm._v(
+            ". Sed vehicula diam sit amet mi efficitur vehicula in in nisl. Aliquam erat volutpat. Suspendisse lorem turpis, accumsan consequat consectetur gravida,\n            "
+          ),
+          _c("a", { attrs: { href: "#" } }, [_vm._v("pellentesque ac ante")]),
+          _vm._v(
+            ". Aliquam in commodo ligula, sit amet mollis neque. Vestibulum at facilisis massa.\n        "
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("section", { attrs: { id: "section4" } }, [
+        _c("h2", [_vm._v("Section 4")]),
+        _vm._v(" "),
+        _c("p", [
+          _vm._v(
+            "Nam luctus, enim in interdum condimentum, nisl diam iaculis lorem, vel volutpat mi leo sit amet lectus. Praesent non odio bibendum magna bibendum accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam euismod, tortor nec pharetra ultricies, ante erat imperdiet velit, nec laoreet enim lacus a velit."
+          )
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-04108a69", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

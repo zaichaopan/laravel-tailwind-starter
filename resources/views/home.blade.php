@@ -94,4 +94,7 @@
     </div> --}}
 
 </div>
+<div class="p-4 md:px-0">
+    <base-tab></base-tab>
+</div>
 @endsection

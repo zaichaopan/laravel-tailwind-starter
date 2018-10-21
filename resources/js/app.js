@@ -55,6 +55,8 @@ Vue.component('base-carousel', require('./components/BaseCarousel.vue'))
 Vue.component('comment-list', require('./components/CommentList.vue'))
 Vue.component('comment-item', require('./components/CommentItem.vue'))
 
+Vue.component('base-tab', require('./components/BaseTab.vue'))
+
 /* eslint-disable */
 const app = new Vue({
     el: '#app'
