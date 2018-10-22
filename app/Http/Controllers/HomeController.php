@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Attachment;
-
 class HomeController extends Controller
 {
     /**
@@ -24,7 +21,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $images = Attachment::all();
-        return view('home', compact('images'));
+        $question = [
+            'question' => 'Who exactly are you?',
+            'answer' => 'My name is <strong>Jeffrey way</strong>, and I have been part of the Laravel community since the early days of version 3.'
+        ];
+
+        return view('home', compact('question'));
     }
 }

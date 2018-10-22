@@ -309,6 +309,62 @@ $jane->followers();
 
 // get MutualFollowers
 // get followers
-// get follows 
+// get follows
+
+```
+
+
+```
+
+let brands = document.querySelector(".brands");
+let last = document.querySelector(".last");
+
+let first = images[0];
+console.log(first);
+let left = first.getBoundingClientRect().left;
+first.scrollLeft = 228
+console.log(first.offsetLeft)
+
+class HorizontalScrolling {
+  constructor() {
+    this.interval = null;
+  }
+  start() {
+    this.interval = setInterval(() => {
+        let images = brands.querySelector('img');
+        brands.scrollLeft++;
+        let first = images[0];
+        if(brands.scrollLeft > first.getBoundingClientRect().left + first.offsetWidth) {
+            brands.removeChild(brands.childNodes[0]);
+            brands.appendChild(first);
+        }
+
+
+
+        });
+    }, 10);
+  }
+  stop() {
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+}
+
+//[
+
+
+// let scrolling = new HorizontalScrolling();
+
+// setTimeout(() => scrolling.start(), 1000);
+// [...images].forEach(image => {
+//   image.addEventListener("mouseover", e => {
+//     clearInterval(scrolling.stop());
+//   });
+
+//   image.addEventListener("mouseout", e => {
+//     clearInterval(scrolling.start());
+//   });
+// });
 
 ```

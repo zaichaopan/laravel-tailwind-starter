@@ -1,28 +1,28 @@
 <template>
-    <click-outside :do="handleClickOutside">
-        <div class="dropdown">
-            <button
-                type="button"
-                class="inline-block flex items-center focus:outline-none px-4 py-2 rounded text-white font-medium bg-blue hover:bg-blue-dark"
-                @click="open = !open"
-                ref="referenceElement"
-            >
-                <slot name="dropdown-trigger">
-                    <span class="mr-1">Dropdown</span>
-                </slot>
-                <span class="ml-2">
-                    <base-icon icon-name="caret" :width="10" :height="10">
-                        <icon-caret/>
-                    </base-icon>
-                </span>
-            </button>
-            <div class="mt-px" v-show="open" ref="onPopper">
-                <div class="bg-white shadow rounded border overflow-hidden">
-                    <slot name="dropdown-menu"></slot>
-                </div>
-            </div>
+  <click-outside :do="handleClickOutside">
+    <div class="dropdown">
+      <button
+        type="button"
+        class="inline-block flex items-center focus:outline-none px-4 py-2 rounded text-white font-medium bg-blue hover:bg-blue-dark"
+        @click="open = !open"
+        ref="referenceElement"
+      >
+        <slot name="dropdown-trigger">
+          <span class="mr-1">Dropdown</span>
+        </slot>
+        <span class="ml-2">
+          <base-icon icon-name="caret" :width="10" :height="10">
+            <icon-caret/>
+          </base-icon>
+        </span>
+      </button>
+      <div class="mt-px" :class="`z-${zIndex}`" v-show="open" ref="onPopper">
+        <div class="bg-white shadow rounded border overflow-hidden">
+          <slot name="dropdown-menu"></slot>
         </div>
-    </click-outside>
+      </div>
+    </div>
+  </click-outside>
 </template>
 
 <script>
@@ -32,6 +32,10 @@ export default {
     placement: {
       type: String,
       default: 'bottom-start'
+    },
+    zIndex: {
+      type: Number,
+      default: 10
     }
   },
   data () {

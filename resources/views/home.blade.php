@@ -1,6 +1,6 @@
-@extends('layouts.app', ['title' => 'Home']) 
+@extends('layouts.app', ['title' => 'Home'])
 @section('app.content')
-<div class="mt-4">
+<div class="p-4 md:px-0">
     <base-dropdown>
         <div slot="dropdown-trigger">
             Home
@@ -96,5 +96,9 @@
 </div>
 <div class="p-4 md:px-0">
     <base-tab></base-tab>
+</div>
+
+<div class="p-4 md:px-0">
+    <base-collapse title-key="question" content-key="answer" :item="{{json_encode($question)}}"></base-collapse>
 </div>
 @endsection

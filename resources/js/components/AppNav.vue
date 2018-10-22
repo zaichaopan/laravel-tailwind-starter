@@ -21,7 +21,7 @@
       <div class="navbar-right" :class="{active: shouldShowMobileNav}">
         <ul>
           <li>
-            <a to="/home" class="nav-link">Home</a>
+            <a href="/home" class="nav-link">Home</a>
           </li>
           <li>
             <a href="#" class="nav-link">
