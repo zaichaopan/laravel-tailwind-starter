@@ -22,3 +22,5 @@ Route::get('/home', 'HomeController@index')
     ->middleware('verified');
 
 Route::resource('places', 'PlacesController');
+
+Route::post('places/{place}/comments', 'PlaceCommentsController@store')->name('places.comments.store');

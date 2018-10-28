@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use Illuminate\Http\Request;
 use App\Events\PlaceWasCreated;
 use App\Http\Requests\Places\{Store, Update};
 
@@ -17,8 +16,7 @@ class PlacesController extends Controller
 
     public function index()
     {
-        $places = Place::paginate(10);
-        return view('places.index', compact('places'));
+        return view('places.index', ['places' => Place::paginate(10)]);
     }
 
     public function create()
@@ -26,9 +24,14 @@ class PlacesController extends Controller
         return view('places.create');
     }
 
-    public function show(Place $place, Request $request)
+    public function show(Place $place)
     {
-        return view('places.show', compact('place'));
+        $comments = $place->comments()->whereNull('parent_id')->paginate(2);
+
+        return view('places.show', [
+            'place' => $place,
+            'comments' => $comments
+       ]);
     }
 
     public function store(Store $request)
@@ -40,13 +43,12 @@ class PlacesController extends Controller
 
     public function edit(Place $place)
     {
-        return view('places.edit', compact('place'));
+        return view('places.edit', ['place' => $place]);
     }
 
     public function update(Place $place, Update $request)
     {
-        $place = $request->persist();
-        return redirect()->route('places.show', $place);
+        return redirect()->route('places.show', ['place' => $request->persist()]);
     }
 
     public function destroy(Place $place)

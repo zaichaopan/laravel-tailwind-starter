@@ -165,7 +165,7 @@ trait FollowScopes
 
 // ActAsFollower
 
-````php
+```php
 trait ActAsFollower
 {
     protected static function bootActAsFollower()
@@ -255,8 +255,7 @@ trait ActAsFollower
 
 ```
 
-
-```
+```php
 trait ActionAsFollowable
 {
     protected static function bootFollowable()
@@ -293,8 +292,7 @@ trait ActionAsFollowable
 
 ```
 
-
-```
+```php
 class User
 {
     use ActAsFollower, AsAsFollowable;
@@ -313,58 +311,174 @@ $jane->followers();
 
 ```
 
+```php
+class Orders
+{
+    public $currentStep;
 
-```
+    public $steps = ['shipping', 'billing', 'confirmation'];
 
-let brands = document.querySelector(".brands");
-let last = document.querySelector(".last");
-
-let first = images[0];
-console.log(first);
-let left = first.getBoundingClientRect().left;
-first.scrollLeft = 228
-console.log(first.offsetLeft)
-
-class HorizontalScrolling {
-  constructor() {
-    this.interval = null;
-  }
-  start() {
-    this.interval = setInterval(() => {
-        let images = brands.querySelector('img');
-        brands.scrollLeft++;
-        let first = images[0];
-        if(brands.scrollLeft > first.getBoundingClientRect().left + first.offsetWidth) {
-            brands.removeChild(brands.childNodes[0]);
-            brands.appendChild(first);
-        }
-
-
-
-        });
-    }, 10);
-  }
-  stop() {
-    if (this.interval) {
-      clearInterval(this.interval);
+    public function currentStep()
+    {
+        return $currentStep ?? $steps[0];
     }
-  }
+
+    public function nextStep()
+    {
+        $this->currentStep = $this->steps[array_search($this->currentStep(), $this->steps) +1);
+    }
+
+    public function previousStep()
+    {
+        $this->currentStep = $this->steps[array_search($this->currentStep(), $this->steps) -1);
+    }
+
+    public function isFirstStep()
+    {
+        return $this->currentStep() === $this->steps[0];
+    }
+
+    public function isLastStep()
+    {
+        return $this->currentStep() === $this->steps[count($this->steps)-1];
+    }
 }
 
-//[
+class OrdersController
+{
+    public function create()
+    {
+        $order  = Order::create(session('orderParams', []));
+        $order->currentStep = session('orderStep');
+        return view('orders.create', ['order' => $order]);
+    }
+
+    public function store(Request $request)
+    {
+        //valid base on step
+        $orderParams = array_merge(
+            session('order_params'),
+            array_only($order->currentStep() . 'AllowedParams',  $request->all()
+        );
+
+        $order = Order::create($orderParams);
+        $order->currentStep  = session('order_step');
 
 
-// let scrolling = new HorizontalScrolling();
+        if ($request->has('back_button')) {
+            $order->previousStep();
+        }elseif ($order->isLastStep()) {
+           // do all validation and sav
+        }else {
+            $order->nextStep();
+        }
 
-// setTimeout(() => scrolling.start(), 1000);
-// [...images].forEach(image => {
-//   image.addEventListener("mouseover", e => {
-//     clearInterval(scrolling.stop());
-//   });
+        session('order_step') = $order->currentStep();
 
-//   image.addEventListener("mouseout", e => {
-//     clearInterval(scrolling.start());
-//   });
-// });
+        // has not created
+        if ($order->new) {
+            return redirect('back');
+        }
 
+        // $order has been created
+        session('orderParams') = null;
+        session('currentStep' ) = null;
+        return view('orders.show', ['order' => $order]);
+    }
+}
+```
+
+```html
+<form method="POST" action="{{ route('orders.store')}}">
+    @csrf
+    @include("order.partials". $order->currentStep() . '_step');
+
+    @if (!$order->isFirstStep())
+        <button name="back_button" type="submit">Back</button>
+    @endif
+    <button type='submit'>Continue</button>
+</form>
+```
+
+## Nested Comments
+
+```php
+class PostsController extends Controller
+{
+
+    public function index()
+    {
+        return view('posts.index', ['posts' => Post::paginate()]);
+    }
+
+    public function show(Post $post, Request $request)
+    {
+        $comments = $request->has('comment')
+            ? $post->comments()->where('id', $request->comment)
+            : $post->comments()->whereNull('parent_id');
+
+        $comments = $comments->paginate(5);
+
+        return view('posts.show', ['post' => $post, 'comments' => $comments]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
+    }
+
+    public function store(Request $request)
+    {
+        //
+    }
+}
+```
+
+```php
+class Comment
+{
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Comment::class);
+    }
+
+    public function commentable()
+    {
+        return $this->morphTo();
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
+}
+```
+
+```php
+abstract class CommentsController extends Controller
+{
+    public function create(CommentableInterface $commentableInterface, Request $request)
+    {
+        $comment= new Comment($request->all());
+        $commentableInterface->comments()->save($comment);
+    }
+
+    public function delete()
+    {
+    }
+
+    abstract protected function commentable(Request $request);
+}
+```
+
+```php
+class PostCommentsController extends CommentsController
+{
+    public function($reque)
+}
 ```

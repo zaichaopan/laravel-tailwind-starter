@@ -16,7 +16,7 @@ class Place extends Model
     */
     protected $guarded = [];
 
-    protected $with = ['images'];
+    protected $with = ['images', 'creator'];
 
     protected static function boot()
     {

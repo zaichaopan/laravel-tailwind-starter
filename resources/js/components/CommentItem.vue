@@ -1,11 +1,15 @@
 <template>
-    <div>
-        <hr>
-        <div>{{comment.body}}</div>
-        <div v-if="comment.children">
-            <comment-item v-for="(child, index) in comment.children" :comment="child" :key="index"></comment-item>
-        </div>
+  <div class="border-l border-grey pl-2">
+    <div>{{ comment.user.name}} say ... {{comment.body}}</div>
+    <div v-if="comment.comments">
+      <comment-item
+        v-for="(item, index) in comment.comments"
+        :comment="item"
+        :key="index"
+        :nesting="nesting+1"
+      ></comment-item>
     </div>
+  </div>
 </template>
 
 <script>
@@ -15,6 +19,10 @@ export default {
     comment: {
       type: Object,
       required: true
+    },
+    nesting: {
+      type: Number,
+      default: 1
     }
   }
 }

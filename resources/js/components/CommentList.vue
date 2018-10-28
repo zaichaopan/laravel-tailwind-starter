@@ -1,23 +1,22 @@
 <template>
-    <div v-if="comments.length">
-        <div v-for="(comment, index) in comments" :key="index">
-            <comment-item :comment="comment"></comment-item>
-        </div>
+  <div v-if="comments.total">
+    <div v-for="(comment, index) in comments.data" :key="index">
+      <comment-item :comment="comment"></comment-item>
     </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   props: {
-    fetchEndpoint: {
-      type: String,
+    comments: {
+      type: Object,
       required: true
     }
   },
   data () {
     return {
-      comments: []
+
     }
   },
 
@@ -32,7 +31,6 @@ export default {
     }
   },
   mounted () {
-    this.fetchComments()
   }
 
 }

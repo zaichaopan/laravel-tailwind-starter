@@ -13,15 +13,20 @@ class Comment extends Model
     */
     protected $guarded = [];
 
-    protected $with = ['user'];
+    protected $with = ['user', 'comments'];
 
-    public function replies()
+    public function parent()
     {
-        return $this->hasMany(Comment::class, 'parent_id');
+        return $this->belongsTo(Comment::class);
     }
 
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
     }
 }

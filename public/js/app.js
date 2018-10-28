@@ -40933,18 +40933,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    fetchEndpoint: {
-      type: String,
+    comments: {
+      type: Object,
       required: true
     }
   },
   data: function data() {
-    return {
-      comments: []
-    };
+    return {};
   },
 
 
@@ -40962,9 +40959,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     }
   },
-  mounted: function mounted() {
-    this.fetchComments();
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -40975,10 +40970,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm.comments.length
+  return _vm.comments.total
     ? _c(
         "div",
-        _vm._l(_vm.comments, function(comment, index) {
+        _vm._l(_vm.comments.data, function(comment, index) {
           return _c(
             "div",
             { key: index },
@@ -41106,6 +41101,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'comment-item',
@@ -41113,6 +41112,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     comment: {
       type: Object,
       required: true
+    },
+    nesting: {
+      type: Number,
+      default: 1
     }
   }
 });
@@ -41125,16 +41128,21 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("hr"),
+  return _c("div", { staticClass: "border-l border-grey pl-2" }, [
+    _c("div", [
+      _vm._v(
+        _vm._s(_vm.comment.user.name) + " say ... " + _vm._s(_vm.comment.body)
+      )
+    ]),
     _vm._v(" "),
-    _c("div", [_vm._v(_vm._s(_vm.comment.body))]),
-    _vm._v(" "),
-    _vm.comment.children
+    _vm.comment.comments
       ? _c(
           "div",
-          _vm._l(_vm.comment.children, function(child, index) {
-            return _c("comment-item", { key: index, attrs: { comment: child } })
+          _vm._l(_vm.comment.comments, function(item, index) {
+            return _c("comment-item", {
+              key: index,
+              attrs: { comment: item, nesting: _vm.nesting + 1 }
+            })
           })
         )
       : _vm._e()
