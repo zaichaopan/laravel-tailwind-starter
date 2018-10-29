@@ -8,7 +8,6 @@
     :rows="rows"
     :required="required"
     @input="handleInputChange"
-    :autofocus="autofocus"
   ></textarea>
 </template>
 
@@ -62,6 +61,15 @@ export default {
   },
   mounted () {
     autosize(this.$refs.autosize)
+    if (this.autofocus) {
+      this.$refs.autosize.focus()
+    }
+
+    this.$once('hook:beforeDestroy', () => {
+      this.body = ''
+      this.$refs.autosize.autofocus = false
+      autosize.destroy(this.$refs.autosize)
+    })
   }
 }
 </script>

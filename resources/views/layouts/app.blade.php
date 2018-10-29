@@ -17,8 +17,7 @@
 @endsection
 
 @section('base.content')
-    {{-- @include('layouts.partials._nav') --}}
-
+    @include('layouts.partials._nav')
 <div class="container mx-auto flex flex-col flex-1">
     @yield('app.content')
 </div>
