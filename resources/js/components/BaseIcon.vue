@@ -17,23 +17,11 @@
 <script>
 export default {
   props: {
-    // viewBoxWidth: {
-    //   type: Number,
-    //   default: 18
-    // },
-    // viewBoxHeight: {
-    //   type: Number,
-    //   default: 18
-    // },
     iconName: {
       type: String,
       default: 'box'
     },
-    width: {
-      type: [Number, String],
-      default: 18
-    },
-    height: {
+    size: {
       type: [Number, String],
       default: 18
     },
@@ -48,6 +36,8 @@ export default {
   },
   data () {
     return {
+      width: 18,
+      height: 18,
       viewBoxWidth: 18,
       viewBoxHeight: 18
     }
@@ -57,14 +47,23 @@ export default {
       return `icon-${this.iconName}`
     }
   },
-  mounted () {
-    if (typeof this.viewBox === 'string' && this.viewBox.indexOf('x')) {
-      ([this.viewBoxWidth, this.viewBoxHeight] = this.viewBox.split('x'))
-      return
-    }
+  methods: {
+    setDimension (attribute = 'size') {
+      let width = attribute === 'size' ? 'width' : `${attribute}Width`
+      let height = attribute === 'size' ? 'height' : `${attribute}Height`
 
-    this.viewBoxWidth = this.viewBox
-    this.viewBoxWidth = this.viewBox
+      if (typeof this[attribute] === 'string' && ~this[attribute].indexOf('x')) {
+        ([this[width], this[height]] = this[attribute].split('x'))
+        return
+      }
+
+      this[width] = this[attribute]
+      this[height] = this[attribute]
+    }
+  },
+  mounted () {
+    this.setDimension('viewBox')
+    this.setDimension()
   }
 }
 </script>
@@ -73,6 +72,6 @@ export default {
 svg {
   display: inline-block;
   vertical-align: baseline;
-  margin-bottom: -2px; /* yes, I'm that particular about formatting */
+  margin-bottom: -2px;
 }
 </style>

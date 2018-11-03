@@ -4,16 +4,14 @@
       <base-icon
         v-if="to==='twitter'"
         icon-name="twitter"
-        :width="29"
-        :height="29"
+        size="29x29"
         view-box="29"
         v-tooltip:bottom="'Share on Twitter'"
       />
       <base-icon
         v-if="to==='facebook'"
         icon-name="facebook"
-        :width="29"
-        :height="29"
+        size="29x29"
         view-box="29"
         v-tooltip:bottom="'Share on Facebook'"
       />
