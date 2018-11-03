@@ -4,12 +4,12 @@
                class="flex text-muted pointer items-center border border-grey-light items-stretch">
 
             <div class="border-grey-light border-r flex py-2 flex-1 items-center px-2 cursor-pointer">
-                <base-icon :view-box-width="33.293"
+                <!-- <base-icon :view-box-width="33.293"
                            :view-box-height="33.293"
                            :width="24"
                            :height="24">
                     <component :is="extension"></component>
-                </base-icon>
+                </base-icon> -->
                 <div class="flex-1 px-2 text-sm">
                     {{ message }}
                 </div>

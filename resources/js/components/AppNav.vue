@@ -25,16 +25,12 @@
           </li>
           <li>
             <a href="#" class="nav-link">
-              <base-icon icon-name="message" :view-box-width="24" :view-box-height="24">
-                <icon-chat/>
-              </base-icon>&nbsp;&nbsp;Messages
+              <base-icon icon-name="chat" view-box="24x24"/>&nbsp;&nbsp;Messages
             </a>
           </li>
           <li>
             <a href="#" class="nav-link">
-              <base-icon icon-name="bell">
-                <icon-bell/>
-              </base-icon>&nbsp;Notificationss
+              <base-icon icon-name="bell"/>&nbsp;Notificationss
             </a>
           </li>
           <li>

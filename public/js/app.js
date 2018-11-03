@@ -33985,7 +33985,6 @@ var map = {
 	"./components/ConditionalElement.vue": 132,
 	"./components/CsrfToken.vue": 138,
 	"./components/FileInput.vue": 141,
-	"./components/IconBase.vue": 146,
 	"./components/MultiImageUploader.vue": 151,
 	"./components/NavbarDropdown.vue": 156,
 	"./components/ShareLink.vue": 161,
@@ -35608,10 +35607,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -35679,18 +35674,9 @@ var render = function() {
                 "a",
                 { staticClass: "nav-link", attrs: { href: "#" } },
                 [
-                  _c(
-                    "base-icon",
-                    {
-                      attrs: {
-                        "icon-name": "message",
-                        "view-box-width": 24,
-                        "view-box-height": 24
-                      }
-                    },
-                    [_c("icon-chat")],
-                    1
-                  ),
+                  _c("base-icon", {
+                    attrs: { "icon-name": "chat", "view-box": "24x24" }
+                  }),
                   _vm._v("  Messages\n          ")
                 ],
                 1
@@ -35702,12 +35688,7 @@ var render = function() {
                 "a",
                 { staticClass: "nav-link", attrs: { href: "#" } },
                 [
-                  _c(
-                    "base-icon",
-                    { attrs: { "icon-name": "bell" } },
-                    [_c("icon-bell")],
-                    1
-                  ),
+                  _c("base-icon", { attrs: { "icon-name": "bell" } }),
                   _vm._v(" Notificationss\n          ")
                 ],
                 1
@@ -37375,8 +37356,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -37450,12 +37429,9 @@ var render = function() {
             "span",
             { staticClass: "ml-2" },
             [
-              _c(
-                "base-icon",
-                { attrs: { "icon-name": "caret", width: 10, height: 10 } },
-                [_c("icon-caret")],
-                1
-              )
+              _c("base-icon", {
+                attrs: { "icon-name": "caret", width: 10, height: 10 }
+              })
             ],
             1
           )
@@ -37778,6 +37754,8 @@ exports.push([module.i, "\nsvg[data-v-ea971156] {\n  display: inline-block;\n  v
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 //
 //
 //
@@ -37797,14 +37775,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    viewBoxWidth: {
-      type: Number,
-      default: 18
-    },
-    viewBoxHeight: {
-      type: Number,
-      default: 18
-    },
+    // viewBoxWidth: {
+    //   type: Number,
+    //   default: 18
+    // },
+    // viewBoxHeight: {
+    //   type: Number,
+    //   default: 18
+    // },
     iconName: {
       type: String,
       default: 'box'
@@ -37817,10 +37795,41 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       type: [Number, String],
       default: 18
     },
+    viewBox: {
+      type: [Number, String],
+      default: 18
+    },
     iconColor: {
       type: String,
       default: 'currentColor'
     }
+  },
+  data: function data() {
+    return {
+      viewBoxWidth: 18,
+      viewBoxHeight: 18
+    };
+  },
+
+  computed: {
+    icon: function icon() {
+      return 'icon-' + this.iconName;
+    }
+  },
+  mounted: function mounted() {
+    if (typeof this.viewBox === 'string' && this.viewBox.indexOf('x')) {
+      var _viewBox$split = this.viewBox.split('x');
+
+      var _viewBox$split2 = _slicedToArray(_viewBox$split, 2);
+
+      this.viewBoxWidth = _viewBox$split2[0];
+      this.viewBoxHeight = _viewBox$split2[1];
+
+      return;
+    }
+
+    this.viewBoxWidth = this.viewBox;
+    this.viewBoxWidth = this.viewBox;
   }
 });
 
@@ -37849,7 +37858,12 @@ var render = function() {
         _vm._v(_vm._s(_vm.iconName) + " icon")
       ]),
       _vm._v(" "),
-      _c("g", { attrs: { fill: _vm.iconColor } }, [_vm._t("default")], 2)
+      _c(
+        "g",
+        { attrs: { fill: _vm.iconColor } },
+        [_c(_vm.icon, { tag: "component" })],
+        1
+      )
     ]
   )
 }
@@ -40154,27 +40168,12 @@ var render = function() {
               "border-grey-light border-r flex py-2 flex-1 items-center px-2 cursor-pointer"
           },
           [
-            _c(
-              "base-icon",
-              {
-                attrs: {
-                  "view-box-width": 33.293,
-                  "view-box-height": 33.293,
-                  width: 24,
-                  height: 24
-                }
-              },
-              [_c(_vm.extension, { tag: "component" })],
-              1
-            ),
-            _vm._v(" "),
             _c("div", { staticClass: "flex-1 px-2 text-sm" }, [
               _vm._v(
                 "\n                " + _vm._s(_vm.message) + "\n            "
               )
             ])
-          ],
-          1
+          ]
         ),
         _vm._v(" "),
         _c(
@@ -40211,188 +40210,11 @@ if (false) {
 }
 
 /***/ }),
-/* 146 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(147)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(149)
-/* template */
-var __vue_template__ = __webpack_require__(150)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-14fb6355"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/IconBase.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-14fb6355", Component.options)
-  } else {
-    hotAPI.reload("data-v-14fb6355", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 147 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(148);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("10a1b28e", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14fb6355\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./IconBase.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-14fb6355\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/sass-loader/lib/loader.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./IconBase.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 148 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\nsvg[data-v-14fb6355] {\n  display: inline-block;\n  vertical-align: baseline;\n  margin-bottom: -2px;\n  /* yes, I'm that particular about formatting */\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 149 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    viewBoxWidth: {
-      type: Number,
-      default: 18
-    },
-    viewBoxHeight: {
-      type: Number,
-      default: 18
-    },
-    iconName: {
-      type: String,
-      default: 'box'
-    },
-    width: {
-      type: [Number, String],
-      default: 18
-    },
-    height: {
-      type: [Number, String],
-      default: 18
-    },
-    iconColor: {
-      type: String,
-      default: 'currentColor'
-    }
-  }
-});
-
-/***/ }),
-/* 150 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "svg",
-    {
-      attrs: {
-        xmlns: "http://www.w3.org/2000/svg",
-        width: _vm.width,
-        height: _vm.height,
-        viewBox: "0 0 " + _vm.viewBoxWidth + " " + _vm.viewBoxHeight,
-        "aria-labelledby": _vm.iconName,
-        role: "presentation"
-      }
-    },
-    [
-      _c("title", { class: _vm.iconName, attrs: { lang: "en" } }, [
-        _vm._v(_vm._s(_vm.iconName) + " icon")
-      ]),
-      _vm._v(" "),
-      _c("g", { attrs: { fill: _vm.iconColor } }, [_vm._t("default")], 2)
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-14fb6355", module.exports)
-  }
-}
-
-/***/ }),
+/* 146 */,
+/* 147 */,
+/* 148 */,
+/* 149 */,
+/* 150 */,
 /* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -41161,10 +40983,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -41235,53 +41053,43 @@ var render = function() {
       },
       [
         _vm.to === "twitter"
-          ? _c(
-              "base-icon",
-              {
-                directives: [
-                  {
-                    name: "tooltip",
-                    rawName: "v-tooltip:bottom",
-                    value: "Share on Twitter",
-                    expression: "'Share on Twitter'",
-                    arg: "bottom"
-                  }
-                ],
-                attrs: {
-                  width: 29,
-                  height: 29,
-                  "view-box-width": 29,
-                  "view-box-height": 29
+          ? _c("base-icon", {
+              directives: [
+                {
+                  name: "tooltip",
+                  rawName: "v-tooltip:bottom",
+                  value: "Share on Twitter",
+                  expression: "'Share on Twitter'",
+                  arg: "bottom"
                 }
-              },
-              [_c("icon-twitter")],
-              1
-            )
+              ],
+              attrs: {
+                "icon-name": "twitter",
+                width: 29,
+                height: 29,
+                "view-box": "29"
+              }
+            })
           : _vm._e(),
         _vm._v(" "),
         _vm.to === "facebook"
-          ? _c(
-              "base-icon",
-              {
-                directives: [
-                  {
-                    name: "tooltip",
-                    rawName: "v-tooltip:bottom",
-                    value: "Share on Facebook",
-                    expression: "'Share on Facebook'",
-                    arg: "bottom"
-                  }
-                ],
-                attrs: {
-                  width: 29,
-                  height: 29,
-                  "view-box-width": 29,
-                  "view-box-height": 29
+          ? _c("base-icon", {
+              directives: [
+                {
+                  name: "tooltip",
+                  rawName: "v-tooltip:bottom",
+                  value: "Share on Facebook",
+                  expression: "'Share on Facebook'",
+                  arg: "bottom"
                 }
-              },
-              [_c("icon-facebook")],
-              1
-            )
+              ],
+              attrs: {
+                "icon-name": "facebook",
+                width: 29,
+                height: 29,
+                "view-box": "29"
+              }
+            })
           : _vm._e()
       ],
       1

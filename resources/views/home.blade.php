@@ -1,4 +1,4 @@
-@extends('layouts.app', ['title' => 'Home'])
+@extends('layouts.app', ['title' => 'Home']) 
 @section('app.content')
 <div class="p-4 md:px-0">
     <base-dropdown>
@@ -11,6 +11,15 @@
             <a href="#" class="dropdown-item hover:bg-blue whitespace-no-wrap">Something else here</a>
         </div>
     </base-dropdown>
+
+    <div class="my-2">
+        <h2>Share the link</h2>
+        <share-link to="twitter" :params="{text: 'Replace this with your text', hashtags: 'hashtag1,hashtag2'}">
+
+        </share-link>
+
+        <share-link to="facebook"></share-link>
+    </div>
     {{--
     <div class="my-2">
         <h2>Drop images</h2>

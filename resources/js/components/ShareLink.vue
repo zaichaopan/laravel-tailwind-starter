@@ -3,24 +3,20 @@
     <button type="button" class="share-link" @click.prevent="share">
       <base-icon
         v-if="to==='twitter'"
+        icon-name="twitter"
         :width="29"
         :height="29"
-        :view-box-width="29"
-        :view-box-height="29"
+        view-box="29"
         v-tooltip:bottom="'Share on Twitter'"
-      >
-        <icon-twitter/>
-      </base-icon>
+      />
       <base-icon
         v-if="to==='facebook'"
+        icon-name="facebook"
         :width="29"
         :height="29"
-        :view-box-width="29"
-        :view-box-height="29"
+        view-box="29"
         v-tooltip:bottom="'Share on Facebook'"
-      >
-        <icon-facebook/>
-      </base-icon>
+      />
     </button>
   </div>
 </template>

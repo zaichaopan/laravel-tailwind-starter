@@ -9,7 +9,7 @@
   >
     <title :class="iconName" lang="en">{{iconName}} icon</title>
     <g :fill="iconColor">
-      <slot></slot>
+      <component :is="icon"></component>
     </g>
   </svg>
 </template>
@@ -17,14 +17,14 @@
 <script>
 export default {
   props: {
-    viewBoxWidth: {
-      type: Number,
-      default: 18
-    },
-    viewBoxHeight: {
-      type: Number,
-      default: 18
-    },
+    // viewBoxWidth: {
+    //   type: Number,
+    //   default: 18
+    // },
+    // viewBoxHeight: {
+    //   type: Number,
+    //   default: 18
+    // },
     iconName: {
       type: String,
       default: 'box'
@@ -37,10 +37,34 @@ export default {
       type: [Number, String],
       default: 18
     },
+    viewBox: {
+      type: [Number, String],
+      default: 18
+    },
     iconColor: {
       type: String,
       default: 'currentColor'
     }
+  },
+  data () {
+    return {
+      viewBoxWidth: 18,
+      viewBoxHeight: 18
+    }
+  },
+  computed: {
+    icon () {
+      return `icon-${this.iconName}`
+    }
+  },
+  mounted () {
+    if (typeof this.viewBox === 'string' && this.viewBox.indexOf('x')) {
+      ([this.viewBoxWidth, this.viewBoxHeight] = this.viewBox.split('x'))
+      return
+    }
+
+    this.viewBoxWidth = this.viewBox
+    this.viewBoxWidth = this.viewBox
   }
 }
 </script>

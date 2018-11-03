@@ -11,9 +11,7 @@
           <span class="mr-1">Dropdown</span>
         </slot>
         <span class="ml-2">
-          <base-icon icon-name="caret" :width="10" :height="10">
-            <icon-caret/>
-          </base-icon>
+          <base-icon icon-name="caret" :width="10" :height="10"/>
         </span>
       </button>
       <div class="mt-px" :class="`z-${zIndex}`" v-show="open" ref="onPopper">
