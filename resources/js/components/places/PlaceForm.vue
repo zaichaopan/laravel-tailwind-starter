@@ -52,6 +52,8 @@
   </div>
 </template>
 <script>
+import { pick } from '../../util/helper'
+
 export default {
   props: {
     action: {
@@ -95,13 +97,11 @@ export default {
   },
   methods: {
     initializeForm () {
-      if (this.place) {
-        this.form.description = this.place.description
-        this.form.images = this.place.images
-        this.form.place.address = this.place.address
-        this.form.place.lat = this.place.lat
-        this.form.place.lng = this.place.lng
-      }
+      this.place && (this.form = pick(this.place, [
+        'description',
+        'images',
+        { place: () => pick(this.place, ['address', 'lat', 'lng']) }
+      ]))
     },
     submit () {
       this.busy = true

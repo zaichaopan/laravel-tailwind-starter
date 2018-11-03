@@ -3,20 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use App\Comment;
 
 class PlaceCommentsController extends CommentsController
 {
-    public function __construct()
+    protected function setCommentable()
     {
-        $this->middleware('auth');
-    }
-
-    public function store(Place $place, $request)
-    {
-        $comment = new Comment($request->all());
-        $comment->user()->associate($request->user());
-        $place->comments()->save($comment);
-        return back();
+        return  Place::class;
     }
 }
