@@ -35607,6 +35607,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -35638,7 +35676,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("nav", [
+  return _c("nav", { staticClass: "bg-white shadow" }, [
     _c("div", { staticClass: "nav-container" }, [
       _c("div", { staticClass: "navbar-left" }, [
         _vm._m(0),
@@ -35670,65 +35708,126 @@ var render = function() {
             _vm._m(1),
             _vm._v(" "),
             _c("li", [
-              _c(
-                "a",
-                { staticClass: "nav-link", attrs: { href: "#" } },
-                [
-                  _c("base-icon", {
-                    attrs: { "icon-name": "chat", "view-box": "24x24" }
-                  }),
-                  _vm._v("  Messages\n          ")
-                ],
-                1
-              )
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "w-8 mr-4 icon-chat",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("path", {
+                      staticClass: "primary",
+                      attrs: {
+                        d:
+                          "M2 15V5c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v15a1 1 0 0 1-1.7.7L16.58 17H4a2 2 0 0 1-2-2z"
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      staticClass: "secondary",
+                      attrs: {
+                        d:
+                          "M6 7h12a1 1 0 0 1 0 2H6a1 1 0 1 1 0-2zm0 4h8a1 1 0 0 1 0 2H6a1 1 0 0 1 0-2z"
+                      }
+                    })
+                  ]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c("li", [
-              _c(
-                "a",
-                { staticClass: "nav-link", attrs: { href: "#" } },
-                [
-                  _c("base-icon", { attrs: { "icon-name": "bell" } }),
-                  _vm._v(" Notificationss\n          ")
-                ],
-                1
-              )
+              _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _c(
+                  "svg",
+                  {
+                    staticClass: "w-8 mr-4 icon-notification",
+                    attrs: {
+                      xmlns: "http://www.w3.org/2000/svg",
+                      viewBox: "0 0 24 24"
+                    }
+                  },
+                  [
+                    _c("circle", {
+                      staticClass: "secondary",
+                      attrs: { cx: "12", cy: "19", r: "3" }
+                    }),
+                    _vm._v(" "),
+                    _c("path", {
+                      staticClass: "primary",
+                      attrs: {
+                        d:
+                          "M10.02 4.28L10 4a2 2 0 1 1 3.98.28A7 7 0 0 1 19 11v5a1 1 0 0 0 1 1 1 1 0 0 1 0 2H4a1 1 0 0 1 0-2 1 1 0 0 0 1-1v-5a7 7 0 0 1 5.02-6.72z"
+                      }
+                    })
+                  ]
+                )
+              ])
             ]),
             _vm._v(" "),
             _c(
               "li",
               [
-                _c("navbar-dropdown", { attrs: { alignment: "r" } }, [
-                  _c(
-                    "span",
-                    {
-                      attrs: { slot: "dropdown-toggle" },
-                      slot: "dropdown-toggle"
-                    },
-                    [_vm._v(_vm._s(_vm.user.name))]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { attrs: { slot: "dropdown-menu" }, slot: "dropdown-menu" },
-                    [
+                _c(
+                  "navbar-dropdown",
+                  { attrs: { alignment: "r" } },
+                  [
+                    _c(
+                      "span",
+                      {
+                        attrs: { slot: "dropdown-toggle" },
+                        slot: "dropdown-toggle"
+                      },
+                      [
+                        _c("img", {
+                          staticClass: "w-10 h-10 rounded-full",
+                          attrs: {
+                            src:
+                              "https://loremflickr.com/320/240/paris,girl/all",
+                            alt: ""
+                          }
+                        })
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("template", { slot: "dropdown-menu" }, [
                       _c(
                         "a",
                         {
                           staticClass: "navbar-dropdown-item",
                           attrs: { href: "#" }
                         },
-                        [_vm._v("Action")]
+                        [
+                          _c(
+                            "span",
+                            { staticClass: "font-bold pb-2 text-grey-darkest" },
+                            [_vm._v(_vm._s(_vm.user.name))]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { staticClass: "text-xs text-grey-dark" },
+                            [_vm._v(_vm._s(_vm.user.email))]
+                          )
+                        ]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "navbar-dropdown-item",
-                          attrs: { href: "#" }
-                        },
-                        [_vm._v("Setting")]
-                      ),
+                      _c("div", { staticClass: "navbar-dropdown-item" }, [
+                        _c("span", { staticClass: "text-grey-darker" }, [
+                          _vm._v("Notification preferences")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "py-3 text-grey-darker" }, [
+                          _vm._v("Profile & account")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text-grey-darker" }, [
+                          _vm._v("Help & feedback")
+                        ])
+                      ]),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -35742,11 +35841,12 @@ var render = function() {
                             }
                           }
                         },
-                        [_vm._v("Logout")]
+                        [_vm._v("Sign out")]
                       )
-                    ]
-                  )
-                ]),
+                    ])
+                  ],
+                  2
+                ),
                 _vm._v(" "),
                 _c(
                   "form",
@@ -38910,6 +39010,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'comment-item',
@@ -38943,7 +39045,7 @@ var render = function() {
     _c("div", { staticClass: "flex" }, [
       _c("div", { staticClass: "avatar flex-no-shrink" }, [
         _c("img", {
-          staticClass: "rounded",
+          staticClass: "rounded-full",
           class: "" + (_vm.nesting > 1 ? "h-10 w-10" : "h-12 w-12"),
           attrs: {
             src: "https://placeimg.com/640/480/people",
@@ -38952,17 +39054,19 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "flex flex-col flex-1" }, [
+      _c("div", { staticClass: "flex flex-col flex-1 pl-3" }, [
         _c("div", { staticClass: "flex flex-col px-2 mb-2" }, [
-          _c("div", { staticClass: "text-grey-darker text-sm" }, [
-            _vm._v(
-              _vm._s(_vm.comment.user.name) +
-                " • " +
-                _vm._s(_vm.comment.created_at)
-            )
+          _c("div", { staticClass: "text-sm flex justify-between mb-2" }, [
+            _c("span", { staticClass: "text-grey-darkest font-bold" }, [
+              _vm._v(_vm._s(_vm.comment.user.name))
+            ]),
+            _vm._v(" "),
+            _c("span", { staticClass: "text-grey-darker" }, [
+              _vm._v(_vm._s(_vm.comment.created_at_for_humans))
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "py-2" }, [
+          _c("div", { staticClass: "py-2 text-grey-darker" }, [
             _vm._v(_vm._s(_vm.comment.body))
           ]),
           _vm._v(" "),
@@ -38998,7 +39102,7 @@ var render = function() {
                         attrs: {
                           required: true,
                           "custom-class":
-                            "w-full border border-grey rounded p-2",
+                            "w-full bg-grey-lighter rounded py-2 px-4 text-sm",
                           placeholder: "Add your comment...",
                           autofocus: true
                         },
@@ -39232,6 +39336,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -39278,7 +39386,10 @@ var render = function() {
     [
       _c(
         "div",
-        { staticClass: "flex pt-4 mb-10", attrs: { id: "comment-form" } },
+        {
+          staticClass: "flex pt-4 mb-10 rounded bg-white px-6",
+          attrs: { id: "comment-form" }
+        },
         [
           _vm._m(0),
           _vm._v(" "),
@@ -39290,7 +39401,7 @@ var render = function() {
                   _c("autosize-textarea", {
                     attrs: {
                       required: true,
-                      "custom-class": "w-full border border-grey rounded p-2",
+                      "custom-class": "w-full bg-grey-lighter rounded p-2",
                       placeholder: "Add your comment..."
                     },
                     model: {
@@ -39314,11 +39425,14 @@ var render = function() {
       _vm.comments.total
         ? _c(
             "div",
-            { staticClass: "#comment-list" },
+            { staticClass: "#comment-list rounded shadow" },
             _vm._l(_vm.comments.data, function(comment, index) {
               return _c(
                 "div",
-                { key: index, staticClass: "flex mb-2" },
+                {
+                  key: index,
+                  staticClass: "flex mb-1 rounded p-6 bg-white mb-1"
+                },
                 [_c("comment-item", { attrs: { comment: comment } })],
                 1
               )
@@ -40705,7 +40819,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.navbar-dropdown-item[data-v-5fabd228] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  text-decoration: none;\n  font-size: .875rem;\n  display: block;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n  border-bottom-width: 1px;\n  color: #606f7b;\n  white-space: nowrap;\n}\n.navbar-dropdown-item[data-v-5fabd228]:hover {\n  background-color: #f8fafc;\n}\n", ""]);
+exports.push([module.i, "\n.nav-dropdown-btn[data-v-5fabd228] {\n  padding-left: 1rem;\n  padding-right: 1rem;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  display: inline-block;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  display: flex;\n  align-items: center;\n  height: 4rem;\n  font-size: .875rem;\n  font-weight: 300;\n  text-transform: capitalize;\n  font-size: .875rem;\n  color: #606f7b;\n  text-decoration: underline;\n  text-decoration: none;\n}\n.navbar-dropdown-item[data-v-5fabd228] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n  text-decoration: none;\n  font-size: .875rem;\n  padding-left: 1rem;\n  padding-right: 1rem;\n  padding-top: .75rem;\n  padding-bottom: .75rem;\n  border-bottom-width: 1px;\n  color: #606f7b;\n  white-space: nowrap;\n}\n@media (min-width: 992px) {\n.dropdown[data-v-5fabd228] {\n    margin-top: .75rem;\n}\n.dropdown[data-v-5fabd228]::after {\n    content: \"\";\n    height: 1rem;\n    width: 1rem;\n    border: 1px solid #dae1e7;\n    position: absolute;\n    top: 0;\n    right: 0;\n    -webkit-transform: translateY(-50%) translateX(-150%) rotate(45deg);\n            transform: translateY(-50%) translateX(-150%) rotate(45deg);\n    background: white;\n    border-bottom: navajowhite;\n    border-right: none;\n    z-index: 1;\n}\n}\n", ""]);
 
 // exports
 
@@ -40746,7 +40860,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     dropdownClass: {
-      type: String
+      type: String,
+      default: 'dropdown'
     },
     btnClass: {
       type: String
@@ -40754,6 +40869,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     alignment: {
       type: String,
       default: 'l'
+    },
+    displayCaret: {
+      type: Boolean,
+      default: false
     },
     zIndex: {
       type: Number,
@@ -40794,8 +40913,7 @@ var render = function() {
       _c(
         "button",
         {
-          staticClass:
-            "px-4 flex items-center inline-block select-none flex items-center h-16 text-sm font-light capitalize text-sm text-grey-darker underline no-underline focus:outline-none",
+          staticClass: "nav-dropdown-btn focus:outline-none",
           class: _vm.btnClass,
           attrs: { role: "button", type: "button" },
           on: {
@@ -40807,19 +40925,21 @@ var render = function() {
         [
           _vm._t("dropdown-toggle"),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "ml-1" },
-            [
-              _c(
-                "base-icon",
-                { attrs: { "icon-name": "caret", width: 12, height: 12 } },
-                [_c("icon-caret")],
+          _vm.displayCaret
+            ? _c(
+                "div",
+                { staticClass: "ml-1" },
+                [
+                  _c(
+                    "base-icon",
+                    { attrs: { "icon-name": "caret", width: 12, height: 12 } },
+                    [_c("icon-caret")],
+                    1
+                  )
+                ],
                 1
               )
-            ],
-            1
-          )
+            : _vm._e()
         ],
         2
       ),
@@ -40836,7 +40956,7 @@ var render = function() {
             }
           ],
           staticClass:
-            "w-full lg:w-48 absolute z-50 shadow bg-white border border-b-0 overflow-hidden",
+            "w-full lg:w-64 absolute z-50 shadow bg-white border border-b-0 rounded shadow-md",
           class: _vm.dropdownClass + " pin-" + _vm.alignment
         },
         [_vm._t("dropdown-menu")],

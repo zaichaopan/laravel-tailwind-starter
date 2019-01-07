@@ -1,16 +1,16 @@
 <template>
   <div class="flex flex-col">
-    <div class="flex pt-4 mb-10" id="comment-form">
+    <div class="flex pt-4 mb-10 rounded bg-white px-6" id="comment-form">
       <div class="avatar flex-no-shrink">
         <img src="https://placeimg.com/640/480/people" class="rounded h-12 w-12">
       </div>
       <div class="flex flex-col flex-1 px-2">
-        <form class="">
+        <form class>
           <div>
             <autosize-textarea
               v-model="newCommentBody"
               :required="true"
-              custom-class="w-full border border-grey rounded p-2"
+              custom-class="w-full bg-grey-lighter rounded p-2"
               placeholder="Add your comment..."
             ></autosize-textarea>
           </div>
@@ -26,8 +26,12 @@
         </form>
       </div>
     </div>
-    <div v-if="comments.total" class="#comment-list">
-      <div v-for="(comment, index) in comments.data" :key="index" class="flex mb-2">
+    <div v-if="comments.total" class="#comment-list rounded shadow">
+      <div
+        v-for="(comment, index) in comments.data"
+        :key="index"
+        class="flex mb-1 rounded p-6 bg-white mb-1"
+      >
         <comment-item :comment="comment"></comment-item>
       </div>
     </div>

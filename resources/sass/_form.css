@@ -1,0 +1,4 @@
+.form-label {
+    @apply mb-2 block text-sm text-dark;
+}
+

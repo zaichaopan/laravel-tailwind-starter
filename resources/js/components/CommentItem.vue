@@ -5,16 +5,18 @@
         <img
           src="https://placeimg.com/640/480/people"
           :alt="comment.user.name"
-          class="rounded"
+          class="rounded-full"
           :class="`${nesting > 1 ? 'h-10 w-10': 'h-12 w-12'}`"
         >
       </div>
-      <div class="flex flex-col flex-1">
+      <div class="flex flex-col flex-1 pl-3">
         <div class="flex flex-col px-2 mb-2">
-          <div
-            class="text-grey-darker text-sm"
-          >{{ comment.user.name}}&nbsp;&bull;&nbsp;{{ comment.created_at}}</div>
-          <div class="py-2">{{comment.body}}</div>
+          <div class="text-sm flex justify-between mb-2">
+            <span class="text-grey-darkest font-bold">{{ comment.user.name}}</span>
+
+            <span class="text-grey-darker">{{ comment.created_at_for_humans}}</span>
+          </div>
+          <div class="py-2 text-grey-darker">{{comment.body}}</div>
           <div class="text-grey-darker text-sm">
             <button
               class="text-grey-darker"
@@ -29,7 +31,7 @@
                 <autosize-textarea
                   v-model="newCommentBody"
                   :required="true"
-                  custom-class="w-full border border-grey rounded p-2"
+                  custom-class="w-full bg-grey-lighter rounded py-2 px-4 text-sm"
                   placeholder="Add your comment..."
                   :autofocus="true"
                 ></autosize-textarea>

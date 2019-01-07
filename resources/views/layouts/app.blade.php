@@ -1,24 +1,33 @@
-@extends('layouts.base', ['includingFooter' => true])
-@section('head.scripts')
-<script src="{{ asset('js/app.js') }}" defer></script>
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-<script>
-    window.App = {!! json_encode([
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title> {{ config('app.name') }} - @yield('title')</title>
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <script>
+        window.App = {!! json_encode([
                 'csrfToken' => csrf_token(),
                 'user' => Auth::user(),
                 'googleMapKey' => env('GOOGLE_MAP_KEY')
             ]) !!};
+    </script>
 
-</script>
-@endsection
 
-@section('head.links')
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
-@endsection
+    @yield('head')
+</head>
+<body class="font-sans bg-grey-lightest">
+    <div id="app">
+        @include('layouts.partials._nav')
+        <div class="container mx-auto">
+            <div class="flex flex-col">
+                @yield('content')
+            </div>
+        </div>
+    </div>
 
-@section('base.content')
-    @include('layouts.partials._nav')
-<div class="container mx-auto flex flex-col flex-1">
-    @yield('app.content')
-</div>
-@endsection
+<script src="{{ asset('js/app.js') }}"></script>
+@yield('scripts')
+</html>

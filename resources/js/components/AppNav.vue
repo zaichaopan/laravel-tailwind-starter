@@ -1,5 +1,5 @@
 <template>
-  <nav>
+  <nav class="bg-white shadow">
     <div class="nav-container">
       <!-- left -->
       <div class="navbar-left">
@@ -25,22 +25,60 @@
           </li>
           <li>
             <a href="#" class="nav-link">
-              <base-icon icon-name="chat" view-box="24x24"/>&nbsp;&nbsp;Messages
+              <!-- <base-icon icon-name="chat" view-box="24x24"/>&nbsp;&nbsp;Messages -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-8 mr-4 icon-chat"
+              >
+                <path
+                  class="primary"
+                  d="M2 15V5c0-1.1.9-2 2-2h16a2 2 0 0 1 2 2v15a1 1 0 0 1-1.7.7L16.58 17H4a2 2 0 0 1-2-2z"
+                ></path>
+                <path
+                  class="secondary"
+                  d="M6 7h12a1 1 0 0 1 0 2H6a1 1 0 1 1 0-2zm0 4h8a1 1 0 0 1 0 2H6a1 1 0 0 1 0-2z"
+                ></path>
+              </svg>
             </a>
           </li>
           <li>
             <a href="#" class="nav-link">
-              <base-icon icon-name="bell"/>&nbsp;Notificationss
+              <!-- <base-icon icon-name="bell"/>&nbsp; -->
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                class="w-8 mr-4 icon-notification"
+              >
+                <circle cx="12" cy="19" r="3" class="secondary"></circle>
+                <path
+                  class="primary"
+                  d="M10.02 4.28L10 4a2 2 0 1 1 3.98.28A7 7 0 0 1 19 11v5a1 1 0 0 0 1 1 1 1 0 0 1 0 2H4a1 1 0 0 1 0-2 1 1 0 0 0 1-1v-5a7 7 0 0 1 5.02-6.72z"
+                ></path>
+              </svg>
             </a>
           </li>
           <li>
             <navbar-dropdown alignment="r">
-              <span slot="dropdown-toggle">{{user.name}}</span>
-              <div slot="dropdown-menu">
-                <a href="#" class="navbar-dropdown-item">Action</a>
-                <a href="#" class="navbar-dropdown-item">Setting</a>
-                <a href="/logout" @click.prevent="logout" class="navbar-dropdown-item">Logout</a>
-              </div>
+              <span slot="dropdown-toggle">
+                <img
+                  src="https://loremflickr.com/320/240/paris,girl/all"
+                  alt
+                  class="w-10 h-10 rounded-full"
+                >
+              </span>
+              <template slot="dropdown-menu">
+                <a href="#" class="navbar-dropdown-item">
+                  <span class="font-bold pb-2 text-grey-darkest">{{ user.name }}</span>
+                  <span class="text-xs text-grey-dark">{{ user.email}}</span>
+                </a>
+                <div class="navbar-dropdown-item">
+                  <span class="text-grey-darker">Notification preferences</span>
+                  <span class="py-3 text-grey-darker">Profile & account</span>
+                  <span class="text-grey-darker">Help & feedback</span>
+                </div>
+                <a href="/logout" @click.prevent="logout" class="navbar-dropdown-item">Sign out</a>
+              </template>
             </navbar-dropdown>
             <form ref="logoutForm" action="/logout" method="POST" name="logout">
               <csrf-token/>

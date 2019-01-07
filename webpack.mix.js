@@ -19,4 +19,4 @@ mix.js('resources/js/app.js', 'public/js')
   .tailwind()
   .purgeCss({
     enabled: mix.inProduction()
-  })
+  }).browserSync('https://laravel-tailwind-starter.test')

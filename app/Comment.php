@@ -13,6 +13,8 @@ class Comment extends Model
     */
     protected $guarded = [];
 
+    protected $appends=['created_at_for_humans'];
+
     protected $with = ['user', 'comments'];
 
     public function parent()
@@ -28,5 +30,10 @@ class Comment extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class, 'parent_id');
+    }
+
+    public function getCreatedAtForHumansAttribute()
+    {
+        return $this->created_at->diffForHumans();
     }
 }

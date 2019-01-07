@@ -1,21 +1,27 @@
 <!doctype html>
-<html lang="{{ app()->getLocale() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    @include('layouts.partials._meta')
-    @yield('head.scripts')
-    @yield('head.links')
-    @include('layouts.partials._analytics')
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title> {{ config('app.name') }} - @yield('title')</title>
+    <link href="{{ asset('css/base.css') }}" rel="stylesheet">
+    @yield('head')
 </head>
 
-<body>
-    <div class="flex flex-col min-h-screen font-sans text-black bg-black font-base">
-        <div id="app" class="flex flex-col font-sans min-h-screen bg-white">
-            @yield('base.content')
-            @includeWhen($includingFooter, 'layouts.partials._footer')
+<body class="font-sans bg-grey-lightest">
+    <div id="app">
+        <div class="w-full">
+            <div class="flex flex-col">
+                @yield('content')
+            </div>
         </div>
     </div>
-    @yield('footer.scripts')
+
+    <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
+    @yield('scripts')
 </body>
 
 </html>

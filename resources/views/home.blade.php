@@ -1,6 +1,7 @@
-@extends('layouts.app', ['title' => 'Home']) 
-@section('app.content')
-<div class="p-4 md:px-0">
+@extends('layouts.app')
+@section('title', 'Home')
+@section('content')
+{{-- <div class="p-4 md:px-0">
     <base-dropdown>
         <div slot="dropdown-trigger">
             Home
@@ -19,7 +20,16 @@
         </share-link>
 
         <share-link to="facebook"></share-link>
-    </div>
+    </div> --}}
+
+    @include('sample.table')
+
+    @include('sample.plan')
+
+    @include('sample.newsletter')
+
+    @include('sample.radio')
+
     {{--
     <div class="my-2">
         <h2>Drop images</h2>
@@ -103,11 +113,11 @@
     </div> --}}
 
 </div>
-<div class="p-4 md:px-0">
+{{-- <div class="p-4 md:px-0">
     <base-tab></base-tab>
 </div>
 
 <div class="p-4 md:px-0">
     <base-collapse title-key="question" content-key="answer" :item="{{json_encode($question)}}"></base-collapse>
-</div>
+</div> --}}
 @endsection

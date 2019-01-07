@@ -479,6 +479,162 @@ abstract class CommentsController extends Controller
 ```php
 class PostCommentsController extends CommentsController
 {
-    public function($reque)
+    public function($request)
 }
+```
+
+Use Bin Scripts to onboard process
+
+```sh
+#!/bin/bash
+# Sample bin/init.sh
+
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate --seed
+npm install
+npm run dev
+```
+
+```sh
+#!/bin/bash
+# Sample bin/update.sh
+
+composer install
+php artisan migrate
+npm install
+npm run dev
+```
+
+## Service Classes
+
+Catchall for "POPO (Plain Old PHP Object)" that does stuff without being specifically tied to a design pattern or framework structure.
+
+Get creative with your naming (e.g. __RetrieveMoviePoster__)
+
+Consider __invoke(): RetrieveMoviePoster()
+
+Benefits
+
+- Shorter methods
+- "Separation of Concerns"
+- Easier and clearer and more obvious testing
+- You get to say "POPO" more
+
+## Customer Requests
+
+```php
+class SignUpRequest extends Request
+{
+    public function prepared()
+    {
+        // Do stuff here with the data
+    }
+}
+```
+
+```php
+// In controller
+public function store(SignUpRequest $request)
+{
+    $data = $request->prepared();
+    // ... etc.
+}
+```
+
+Benefits
+
+- Small controllers
+- Easier testing
+- Separate repetitive input logic (e.g. preparing data)
+
+## View Data Composition
+
+- Presenter
+- View Model
+- Responsable
+
+```php
+class PostPresenter
+{
+    public function __construct(Post $post)
+    {
+        $this->post = $post;
+    }
+
+    public function presentPublishedAt()
+    {
+        return $this->published_at->format('M j, Y');
+    }
+
+    // Use customer, * or* use a presenter package to get magic
+    // Eloquent-style accessors
+}
+```
+
+```php
+// In controller
+return view('posts.show')->with('post', new PostPresenter($post));
+```
+
+## View Models
+
+```php
+class DashboardViewModel
+{
+    public function __construct(User $user)
+    {
+        $this->user = $user;
+    }
+
+    public function topTasks()
+    {
+        $overdue = $this->overdueTasks();
+        return array_merge($overdue, $this->fillTasksDueSoon(count($overdue)));
+    }
+
+    public function progressChart()
+    {
+        return [
+            'percentage_complete' => $this->progressPercentageComplete(),
+            'date_markers' => $this->dateMarkers()
+        ];
+    }
+}
+```
+
+```php
+// In use:
+return view('dashboard')->view('vm', new DashboardViewModel($user));
+```
+
+## Responsables
+
+```php
+class DashboardViewResponse implements Responsable
+{
+    public function prepareData()
+    {
+        return [
+            'tasks' => $This->tasks, // etc.
+        ];
+    }
+
+    public function toResponse()
+    {
+        $data = $this->prepareData();
+
+        if (request()->ajax()) {
+            return response()->json($data);
+        }
+
+        return response()->view('dashboard', $data);
+    }
+}
+```
+
+```php
+// In use (in the controller)
+return new DashboardViewResponse($user);
 ```
